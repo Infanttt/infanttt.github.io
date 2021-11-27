@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #03045E url(/assets/background.png) no-repeat;
+    background-size: 100vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navspace a{
+    color: #03045E;
+    font-size: 1em;
+    font-weight: bold;
+}
+.navbar-nav li{
+    padding: 0 0.8em;
+}
+.navbar-nav a:hover{
+    color: #F72585;
+    transition: 300ms ease;
+}
+.actived{
+    background: #F72585;
+    border-radius: 18px;
+    box-shadow: 3px 3px 5px #c1c1c1;
+    transition: ease-out 300ms;
+}
+.actived a{
+    color: #fff;
+}
+.actived a:hover{
+    color: #F72585;
+}
+.actived:hover{
+    background: #fff;
+}
+.left-content{
+    /* background: greenyellow; */
+    margin-top: 15%;
+}
+.left-content h1{
+    color: #03045E;
+    padding-bottom: 0.3em;
+    font-weight: bold;
+    font-size: 3em;
+}
+.left-content h5{
+    margin-right: 14%;
+    font-size: 1.2em;
+    color: #03045E;
+    /* background: red; */
+    font-weight: 400;
+}
+.left-content h5>span{
+    font-weight: bold;
+}
+.img-slider{
+    padding: 100px;
+}
+.carousel-control-prev, .carousel-control-next{
+    background: #cccccc;
+    border: solid 1 px #707070;
+    width: 40px;
+    aspect-ratio: 1;
+    top: calc(50% - 25px);
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 767px){
+    .navspace li a{
+        color: white;
+    }
+    .actived{
+        box-shadow: none;
+        background: none;
+    }
+    .actived a{
+        color: #F72585;
+    }
+    .actived:hover{
+        background: none;
+    }
+    .navbar-nav{
+        background: #03045E;
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
