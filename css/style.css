@@ -56,14 +56,21 @@ body{
     padding: 100px;
 }
 .carousel-control-prev, .carousel-control-next{
-    background: #cccccc;
-    border: solid 1 px #707070;
     width: 40px;
     aspect-ratio: 1;
     top: calc(50% - 25px);
     border-radius: 50%;
 }
-
+.carousel-control-next-icon{
+    width: 200px;
+}
+.chevron img{
+    width: 130%;
+    aspect-ratio: 1;
+    /* background: red; */
+    border-radius: 50%;
+    border: 2px solid #000;
+}
 
 
 
@@ -102,5 +109,8 @@ body{
         width: 100%;
         margin-top: 20px;
         text-align: center;
+    }
+    nav{
+        width: 100%;
     }
 }
