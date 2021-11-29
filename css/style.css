@@ -19,17 +19,17 @@ body{
 .actived{
     background: #F72585;
     border-radius: 20px;
-    box-shadow: 3px 3px 5px #c1c1c1;
+    box-shadow: 3px 3px 8px #cccccc;
     transition: ease-out 300ms;
 }
 .actived a{
     color: #fff;
 }
 .actived a:hover{
-    color: #F72585;
+    color: white;
 }
 .actived:hover{
-    background: #fff;
+    box-shadow: 0 0 8px #F72585;
 }
 .content-cont{
     /* background: red; */
@@ -96,6 +96,12 @@ body{
     opacity: 100%;
     transform: scale(2);
 }
+.cindicators1{
+    bottom: -20%;
+}
+.cindicators1 .active{
+    bottom: -20%;
+}
 .carousel-control-prev, .carousel-control-next{
     width: 40px;
     aspect-ratio: 1;
@@ -106,13 +112,20 @@ body{
 .card-row{
     padding: 2.5vw;
 }
+.card-row a{
+    text-decoration: none;
+}
+.card1:hover{
+    box-shadow: 0 0 8px #90E0EF;
+    transition: all 300ms ease;
+}
 .card1{
     width: 160px;
     height: 200px;
     background: #F2FDFF;
     border: solid 5px #90E0EF;
-    box-shadow: 0 0 8px #90E0EF;
     border-radius: 20px;
+    transition: all 300ms ease;
 }
 .card1 img{
     position: relative;
@@ -142,9 +155,17 @@ body{
     border-radius: 20px;
     background: #F72585;
     position: absolute;
-    padding: 5px 20px;
+    padding: 7px 20px;
     font-weight: 400;
     text-decoration: none;
+    font-weight: 500;
+    transition: all 300ms ease;
+}
+.bottom-content a:hover{
+    /* background: #fff;
+    color: #F72585; */
+    transition: all 300ms ease;
+    box-shadow: 0 0 8px #F72585;
 }
 .footer{
     margin-top: 20%;
@@ -158,6 +179,7 @@ body{
     color: #03045E;
     font-weight: bold;
     font-size: 1.5em;
+    padding-bottom: 0.2em;
 }
 .socials{
     display: flex;
@@ -167,7 +189,9 @@ body{
     color: #03045E;
     font-weight: bold;
     font-size: 1em;
-    margin-right: 7em;
+    margin-right: 7vw;
+    transition: all 300ms ease;
+    /* background: green; */
 }
 .socials img, .socials2 img{
     width: 1.8em;
@@ -183,15 +207,17 @@ body{
     transition: all 300ms ease;
 }
 .socials a:hover{
-    text-decoration: underline;
+    color: #F72585;
+    transition: all 300ms ease;
 }
-.footer h6{
+.footer-label{
     background: #F72585;
     color: #fff;
     margin-top: 10%;
     text-align: center;
-    padding: 1em;
+    padding: 1em 0;
     font-size: 0.8em;
+    font-weight: 500;
 }
 
 
