@@ -88,7 +88,7 @@ body{
 }
 .phone-web img{
     box-shadow: 0 0 2px white;
-    top: calc(50% - 60px);
+    top: calc(50% - 24.3%);
     left: 20%;
     border-radius: 5px;
 }
@@ -106,8 +106,12 @@ body{
     width: 40px;
     aspect-ratio: 1;
     top: calc(50% - 25px);
+}
+.carousel-control-prev img, .carousel-control-next img{
+    width: 40px;
     border-radius: 50%;
     border: solid 2px #000;
+    padding: 5px;
 }
 .card-row{
     padding: 2.5vw;
