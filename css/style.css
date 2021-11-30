@@ -156,7 +156,7 @@ body{
 .bottom-content{
     margin-top: 5%;
     /* background: greenyellow; */
-    padding: 10vw 0;
+    padding: 10vw 0.8em;
 }
 .bottom-content h5{
     color: #F72585;
@@ -265,7 +265,7 @@ body{
 
 @media only screen and (max-width: 991px){
     body{
-        background: white;
+        background: #F2FDFF;
     }
     .navspace li a{
         color: #03045E;
@@ -321,5 +321,29 @@ body{
         /* background: #03045E; */
         margin-top: 5em;
         padding: 12em 0;
+    }
+    .footer .d-flex{
+        display: block !important;
+    }
+    .socials a{
+        margin-right: 3em;
+    }
+    .socials2{
+        margin: 1em 0 ;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .footer .d-flex{
+        display: flex !important;
+    }
+    .socials{
+        display: block;
+    }
+    .socials>div{
+        margin: 0.5em 0;
+    }
+    .socials2{
+        margin: 0.5em;
     }
 }
