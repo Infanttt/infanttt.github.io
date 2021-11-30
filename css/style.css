@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background: #03045E url(/assets/background.png) no-repeat;
+    background: #F2FDFF url(/assets/background.png) no-repeat;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .navspace a{
@@ -113,8 +113,19 @@ body{
     border: solid 2px #000;
     padding: 5px;
 }
+.bottom-content-nest{
+    background: #03045E;
+    margin-top: -3em;
+}
+.card-container{
+    display: flex;
+    justify-content: center;
+    /* background: red; */
+    margin-top: 12em;
+}
 .card-row{
-    padding: 2.5vw;
+    padding: 0 2.5vw;
+    margin-top: 4em;
 }
 .card-row a{
     text-decoration: none;
@@ -143,7 +154,9 @@ body{
     /* background: red; */
 }
 .bottom-content{
-    margin-top: 15%;
+    margin-top: 5%;
+    /* background: greenyellow; */
+    padding: 10vw 0;
 }
 .bottom-content h5{
     color: #F72585;
@@ -158,7 +171,8 @@ body{
     color: #fff;
     border-radius: 20px;
     background: #F72585;
-    position: absolute;
+    position: relative;
+    top: 15px;
     padding: 7px 20px;
     font-weight: 400;
     text-decoration: none;
@@ -172,12 +186,7 @@ body{
     box-shadow: 0 0 8px #F72585;
 }
 .footer{
-    margin-top: 20%;
-    background: white;
-    bottom: 0%;
-}
-.footer-content{
-    padding: 4em 6em;
+    margin-top: 5em;
 }
 .footer h4{
     color: #03045E;
@@ -198,7 +207,7 @@ body{
     /* background: green; */
 }
 .socials img, .socials2 img{
-    width: 1.8em;
+    width: 30px;
     aspect-ratio: 1;
     border: solid 2px #F72585;
     padding: 0 2px;
@@ -240,16 +249,36 @@ body{
 
 
 
+@media only screen and (max-width: 1080px){
+    .card-row{
+        padding: 0 2vw;
+    }
+}
+@media only screen and (max-width: 1000px){
+    .card-row{
+        padding: 0 1.5vw;
+    }
+}
 
 
 
 
-
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 991px){
+    body{
+        background: white;
+    }
     .navspace li a{
-        color: white;
+        color: #03045E;
+        padding: 20px 0;
+    }
+    .navspace li a:hover{
+        color: #F72585;
     }
     .actived{
+        box-shadow: none;
+        background: none;
+    }
+    .actived:hover{
         box-shadow: none;
         background: none;
     }
@@ -260,12 +289,37 @@ body{
         background: none;
     }
     .navbar-nav{
-        background: #03045E;
+        background: white;
         width: 100%;
         margin-top: 20px;
         text-align: center;
     }
     nav{
         width: 100%;
+    }
+    .content-cont{
+        margin-top: 5em;
+    }
+    .left-content h5{
+        margin-right: 0;
+    }
+    .right-content{
+        margin-top: 5em;
+    }
+    .bottom-content-nest{
+        background: #03045E;
+    }
+    .card-container{
+        /* background: #03045E; */
+        margin-top: 30em;
+    }
+    .card-container{
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+    .bottom-content{
+        /* background: #03045E; */
+        margin-top: 5em;
+        padding: 12em 0;
     }
 }
