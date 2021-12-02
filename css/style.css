@@ -1,349 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&display=swap');
+
+*{
+    font-family: 'Assistant', sans-serif;
+}
 body{
     margin: 0;
     padding: 0;
-    background: #F2FDFF url(/assets/background.png) no-repeat;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white url(/assets/bg1.png) no-repeat;
 }
-.navspace a{
-    color: #03045E;
+.nav-mid a{
+    color: #000;
+    font-weight: 700;
+    letter-spacing: -1px;
+    padding: 0.7em 1.5em !important;
     font-size: 1em;
-    font-weight: bold;
 }
-.navbar-nav li{
-    padding: 0 0.8em;
-}
-.navbar-nav a:hover{
-    color: #F72585;
-    transition: 300ms ease;
-}
-.actived{
-    background: #F72585;
-    border-radius: 20px;
-    box-shadow: 3px 3px 8px #cccccc;
-    transition: ease-out 300ms;
-}
-.actived a{
-    color: #fff;
-}
-.actived a:hover{
-    color: white;
-}
-.actived:hover{
-    box-shadow: 0 0 8px #F72585;
-}
-.content-cont{
-    /* background: red; */
-    height: 510px;
-}
-.content-row{
-    height: 510px;
+.nav-mid a:hover{  
+    color: #000;
+    background: #f1f1f1;
 }
 .left-content{
-    /* background: greenyellow; */
-    margin-top: 15%;
+    padding: 13.5em 0 10em 0;
+    position: relative;
+}
+.left-content h1,
+.left-content h5,
+.left-links{
+   margin-left: 17%;
 }
 .left-content h1{
-    color: #03045E;
-    padding-bottom: 0.3em;
-    font-weight: bold;
-    font-size: 3em;
+    font-weight: 700;
+    padding-bottom: 0.5em;
 }
 .left-content h5{
-    margin-right: 14%;
-    font-size: 1.2em;
-    color: #03045E;
-    /* background: red; */
-    font-weight: 400;
+    font-weight: 600;
+    font-size: 1.2em ;
 }
-.left-content h5>span{
-    font-weight: bold;
+.left-links a{
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5em 1em;
+    font-weight: 600;
+    font-size: 0.9em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
-.right-content{
-    /* background: red; */
-    height: 120%;
+.left-links a:hover{
+    color: #fff;
 }
-.img-slider{
-    position: relative;
-    top: 15%;
+.link1:hover{
+    background: #136cda;
+    transition: all 300ms ease;
 }
-.img-slider img{
+.link2:hover{
+    text-decoration: underline;
+    transition: all 300ms ease;
+}
+.left-links{
+    margin-top: 3em;
+}
+.link1{
+    background: #1473E6;
     border-radius: 20px;
 }
-.img-slider-1 img{
-    position: absolute;
-    transition: 500ms ease;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-.img-slider-1 img:hover{
-    cursor: pointer;
-    opacity: 0%;
-    transition: 500ms ease;
-}
-.img-slider-2 img{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.phone-web img{
-    box-shadow: 0 0 2px white;
-    top: calc(50% - 24.3%);
-    left: 20%;
-    border-radius: 5px;
-}
-.phone-web img:hover{
-    opacity: 100%;
-    transform: scale(2);
-}
-.cindicators1{
-    bottom: -20%;
-}
-.cindicators1 .active{
-    bottom: -20%;
-}
-.carousel-control-prev, .carousel-control-next{
-    width: 40px;
-    aspect-ratio: 1;
-    top: calc(50% - 25px);
-}
-.carousel-control-prev img, .carousel-control-next img{
-    width: 40px;
-    border-radius: 50%;
-    border: solid 2px #000;
-    padding: 5px;
-}
-.bottom-content-nest{
-    background: #03045E;
-    margin-top: -3em;
-}
-.card-container{
+.nav-bottom{
     display: flex;
     justify-content: center;
-    /* background: red; */
-    margin-top: 12em;
+    margin-top: 140px;
+    border-bottom: 1px solid #ccc;
 }
-.card-row{
-    padding: 0 2.5vw;
-    margin-top: 4em;
+.nav-bottom ul{
+    padding: 0.3em 0;
 }
-.card-row a{
+.nav-bottom .title{
+    color: #000;
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: -0.5px;
+}
+.nav-bottom .title:hover{
+    color: #000;
+}
+.nav-bottom a{
+    font-weight: 600;
+    color: #1473E6;
+    font-size: 1em;
+    letter-spacing: -0.5px;
+}
+.nav-bottom a:hover{
+    color: #1473E6;
+    text-decoration: underline;
+}
+
+.img-link:hover{
+    text-decoration: underline;
+}
+
+.footer li,
+.footer a{
     text-decoration: none;
+    list-style: none;
+    color: #000;
+    font-size: 0.9em ;
+    padding: 0.2em 0;
 }
-.card1:hover{
-    box-shadow: 0 0 8px #90E0EF;
+.footer a:hover{
+    color: #999999;
     transition: all 300ms ease;
-}
-.card1{
-    width: 160px;
-    height: 200px;
-    background: #F2FDFF;
-    border: solid 5px #90E0EF;
-    border-radius: 20px;
-    transition: all 300ms ease;
-}
-.card1 img{
-    position: relative;
-    left: 50%;
-    top: 10%;
-    transform: translateX(-50%);
-}
-.card1>h5{
-    color: #03045E;
-    position: relative;
-    /* background: red; */
-}
-.bottom-content{
-    margin-top: 5%;
-    /* background: greenyellow; */
-    padding: 10vw 0.8em;
-}
-.bottom-content h5{
-    color: #F72585;
-    text-transform: uppercase;
-    font-size: 0.9em;
-}
-.bottom-content h2{
-    color: #fff;
-    font-weight: bold;
-}
-.bottom-content a{
-    color: #fff;
-    border-radius: 20px;
-    background: #F72585;
-    position: relative;
-    top: 15px;
-    padding: 7px 20px;
-    font-weight: 400;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 300ms ease;
-}
-.bottom-content a:hover{
-    /* background: #fff;
-    color: #F72585; */
-    transition: all 300ms ease;
-    box-shadow: 0 0 8px #F72585;
 }
 .footer{
+    background: #fcfcfc;
+    margin-top: 5em !important;
+}
+.footer .col-lg{
     margin-top: 5em;
-}
-.footer h4{
-    color: #03045E;
-    font-weight: bold;
-    font-size: 1.5em;
-    padding-bottom: 0.2em;
-}
-.socials{
-    display: flex;
-}
-.socials a{
-    text-decoration: none;
-    color: #03045E;
-    font-weight: bold;
-    font-size: 1em;
-    margin-right: 7vw;
-    transition: all 300ms ease;
-    /* background: green; */
-}
-.socials img, .socials2 img{
-    width: 30px;
-    aspect-ratio: 1;
-    border: solid 2px #F72585;
-    padding: 0 2px;
-    border-radius: 50%;
-    margin-right: 0.8em;
-    transition: all 300ms ease;
-}
-.socials img:hover, .socials2 img:hover{
-    box-shadow: 0 0 8px #F72585;
-    transition: all 300ms ease;
-}
-.socials a:hover{
-    color: #F72585;
-    transition: all 300ms ease;
-}
-.footer-label{
-    background: #F72585;
-    color: #fff;
-    margin-top: 10%;
-    text-align: center;
-    padding: 1em 0;
-    font-size: 0.8em;
-    font-weight: 500;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (max-width: 1080px){
-    .card-row{
-        padding: 0 2vw;
-    }
-}
-@media only screen and (max-width: 1000px){
-    .card-row{
-        padding: 0 1.5vw;
-    }
-}
-
-
-
-
-@media only screen and (max-width: 991px){
-    body{
-        background: #F2FDFF;
-    }
-    .navspace li a{
-        color: #03045E;
-        padding: 20px 0;
-    }
-    .navspace li a:hover{
-        color: #F72585;
-    }
-    .actived{
-        box-shadow: none;
-        background: none;
-    }
-    .actived:hover{
-        box-shadow: none;
-        background: none;
-    }
-    .actived a{
-        color: #F72585;
-    }
-    .actived:hover{
-        background: none;
-    }
-    .navbar-nav{
-        background: white;
-        width: 100%;
-        margin-top: 20px;
-        text-align: center;
-    }
-    nav{
-        width: 100%;
-    }
-    .content-cont{
-        margin-top: 5em;
-    }
-    .left-content h5{
-        margin-right: 0;
-    }
-    .right-content{
-        margin-top: 5em;
-    }
-    .bottom-content-nest{
-        background: #03045E;
-    }
-    .card-container{
-        /* background: #03045E; */
-        margin-top: 30em;
-    }
-    .card-container{
-        display: grid;
-        grid-template-columns: auto auto auto;
-    }
-    .bottom-content{
-        /* background: #03045E; */
-        margin-top: 5em;
-        padding: 12em 0;
-    }
-    .footer .d-flex{
-        display: block !important;
-    }
-    .socials a{
-        margin-right: 3em;
-    }
-    .socials2{
-        margin: 1em 0 ;
-    }
-}
-
-@media only screen and (max-width: 767px){
-    .footer .d-flex{
-        display: flex !important;
-    }
-    .socials{
-        display: block;
-    }
-    .socials>div{
-        margin: 0.5em 0;
-    }
-    .socials2{
-        margin: 0.5em;
-    }
 }
