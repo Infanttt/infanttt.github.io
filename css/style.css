@@ -232,6 +232,25 @@ body{
     }
 }
 
+@media only screen and (max-width: 839px){
+    .copyright ul{
+        display: block !important;
+        text-align: center;
+    }
+    .slice{
+        display: none;
+    }
+    .socials ul{
+        display: flex;
+        justify-content: center;
+    }
+    .copyright li{
+        position: relative;
+        right: 55%;
+        transform: translateX(50%);
+    }
+}
+
 /* phone display */
 
 @media only screen and (max-width: 529px){
@@ -243,5 +262,18 @@ body{
 @media only screen and (max-width: 575px){
     .nav-bottom nav{
         text-align: center;
+    }
+}
+
+@media only screen and (max-width: 401px){
+    .region{
+        display: none;
+    }
+}
+@media only screen and (max-width: 334px){
+    .copyright li{
+        position: relative;
+        right: 58%;
+        transform: translateX(50%);
     }
 }
