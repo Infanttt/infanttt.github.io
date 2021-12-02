@@ -12,22 +12,51 @@
 
 </head>
 <body>
+
+<!-- navigation -->
+
     <div class="container-fluid bg-white sticky-top">
-        <nav class="navbar navbar-expand-lg">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span><img src="/assets/navbar-toggler.svg" style="width: 25px;"></span>
-            </button>
-            <div class="mx-auto"></div>
-                <ul class="navbar-nav">
+        <nav class="navbar navbar-expand-xl">
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"> -->
+            <div class="dropdown">
+                    <a href="#" class="nav-item" role="button" data-bs-toggle="dropdown">
+                    <img src="/assets/navbar-toggler.svg" style="width: 20px;">
+                    </a>
+                <ul class="navbar-nav nav-mid dropdown-menu">
                     <li class="nav-item">
+                        <a href="index.html" class="nav-link dropdown-item">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="biodata.html" class="nav-link dropdown-item">Biodata</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact_us.html" class="nav-link dropdown-item">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gallery.html" class="nav-link dropdown-item">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="random.html" class="nav-link dropdown-item">Random</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://fti.unai.edu" class="nav-link dropdown-item">FTI UNAI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://unai.edu" class="nav-link dropdown-item">UNAI</a>
+                    </li>
+                </ul> 
+            </div>   
+
+                <ul class="navbar-nav">
+                    <li class="nav-item banner">
                         <a href="#" class="nav-link" style="color: red; font-weight: 600; font-size: 1.1em;">
                             <img src="/assets/Adobe-logo.png" style="width: 25px; float: left; margin-right: 0.5em;">
                             Adobe
                         </a>
                     </li>
                 </ul>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <div class="mx-auto mx1"></div>
+                <div class="mx-auto mx1"></div>
+            <span class="navmid1">         
                 <ul class="navbar-nav nav-mid">
                     <li class="nav-item">
                         <a href="index.html" class="nav-link">Home</a>
@@ -50,36 +79,41 @@
                     <li class="nav-item">
                         <a href="https://unai.edu" class="nav-link">UNAI</a>
                     </li>
-                </ul>
+                </ul>   
+            </span>
                 <div class="mx-auto mx2"></div>
-            </div>
-                <div class="mx-auto mx3"></div>
             <ul class="navbar-nav nav-right">
-                <li class="nav-item">
+                <li class="nav-item search-icon">
                     <a href="https://unai.edu" class="nav-link"><img src="/assets/search-icon.svg" style="width: 25px;"></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item sign-in">
                     <a href="https://unai.edu" class="nav-link">Sign In</a>
                 </li>
             </ul>
         </nav>
     </div>
 
-    <div class="row container-fluid text-light">
+<!-- content -->
+
+    <div class="row container-fluid text-light left-content1">
         <div class="col-xl-7 left-content">
             <h1>Cyber Monday ends Friday.</h1>
             <h5>Last chance to save 40% on Creative Cloud. <s>S$69.72/mo</s>.<br>S$39.46/mo* (incl. GST). Ends Dec 3. First year only.</h5>
             <div class="left-links">
                 <a href="#" class="link1">Buy now</a>
-                <a href="#" class="link2">See terms</a>
+               <span class="link2"><a href="#" class="">See terms</a></span>
             </div>
         </div>
     </div>
 
+<!-- content navigation -->
+
     <div class="container-fluid nav-bottom">
-        <nav class="navbar navbar-expand-lg">
-            <ul class="navbar-nav">
-                <li class="nav-item nav-link title">Creative Clouds for: </li>
+        <nav class="navbar navbar-expand-sm">
+            <ul class="navbar-nav title2">
+                <li class="nav-item nav-link title">Creative Clouds for:</li>
+            </ul>
+            <ul class="navbar-nav content-nav">
                 <li class="nav-item"><a href="#" class="nav-link">Everyone</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Students</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Photographers</a></li>
@@ -89,6 +123,8 @@
             </ul>
         </nav>
     </div>
+
+<!-- content image -->
 
     <div class="container-fluid">
         <div class="row mt-5">
@@ -159,6 +195,8 @@
     <div class="container-fluid mt-5 text-center">
             <h6>*Subscription renews at the then-current standard price. Eligibility required. <a href="#" style="text-decoration: none;">See Terms</a></h6>
     </div>
+
+<!-- footer -->
 
     <div class="container-fluid row footer">
         <div class="col-lg">
@@ -253,5 +291,70 @@
         </div>
     </div>
 
+    <div class="container-fluid d-flex justify-content-center align-items-center adobe-apps">
+        <ul class="d-flex p-1 justify-content-center" style="border-top: 1px solid black; border-bottom: 1px solid black; width: 100%;">
+            <li class="text-black" style="font-size: 1em; font-weight: 600; list-style: none; padding-right: 2.5em;">
+                Feature downloads
+            </li>
+            <li style="list-style: none; padding-right: 1em;">
+                <a href="#" style="text-decoration: none; color: black; font-size: 0.8em;">
+                    <img src="/assets/acrobat-icon.svg" width="20px heigh">
+                    Adobe Acrobat Reader
+                </a>
+            </li>
+            <li style="list-style: none; padding-right: 1em;">
+                <a href="#" style="text-decoration: none; color: black; font-size: 0.8em;">
+                    <img src="/assets/photoshop-icon.svg" width="20px">
+                    Photoshop
+                </a>
+            </li>
+            <li style="list-style: none;">
+                <a href="#" style="text-decoration: none; color: black; font-size: 0.8em;">
+                    <img src="/assets/illustrator-icon.svg" width="20px">
+                    Illustrator
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="contauiner-fluid row m-3 p-3 d-flex socials">
+        <ul class="d-flex col-xl-4">
+            <li style="list-style: none; padding: 0 0.7em;" class="region"><a href="#" style="text-decoration: none; color: #000; font-size: 0.8em;">
+                <img src="/assets/language_black_24dp.svg" width="20px">
+                Change region <span><img src="/assets/arrow-down.svg" width="20px"></span>
+            </a></li>
+            <li style="list-style: none; padding: 0 0.7em;"><a href="#">
+                <img src="/assets/fb-icon.svg" width="20px">
+            </a></li>
+            <li style="list-style: none; padding: 0 0.7em;"><a href="#">
+                <img src="/assets/tw-icon.svg" width="20px">
+            </a></li>
+            <li style="list-style: none; padding: 0 0.7em;"><a href="#">
+                <img src="/assets/in-icon.svg" width="20px">
+            </a></li>
+            <li style="list-style: none; padding: 0 0.7em;"><a href="#">
+                <img src="/assets/ig-icon.svg" width="20px">
+            </a></li>
+        </ul>
+
+        <ul class="d-flex cookies col-xl-8 d-flex justify-content-end">
+            <li>
+                Copyright © 2021 Adobe. All rights reserved.
+            </li>
+            <li>/</li>
+            <li><a href="#">Privacy</a></li>
+            <li>/</li>
+            <li><a href="#">Terms of Use</a></li>
+            <li>/</li>
+            <li><a href="#">Cookie preferences</a></li>
+            <li>/</li>
+            <li><a href="#">Do not sell my personal Information</a></li>
+            <li>/</li>
+            <li><a href="#">
+                <img src="/assets/i-icon.svg" width="20px">
+                AdChoices
+            </a></li>
+        </ul>
+    </div>
 </body>
 </html>
