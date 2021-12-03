@@ -22,13 +22,16 @@ body{
 }
 .bio-socials{
     text-align: center;
-    padding-bottom: 1em;
+    margin-bottom: 1em;
 }
 .bio-socials a i{
     padding: 0.2em;
     border-radius: 50%;
     transition: all 500ms ease;
     font-size: 1em;
+}
+.bio-socials a:hover{
+    color: #000;
 }
 .bio-socials a{
     color: #000;

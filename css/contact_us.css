@@ -3,7 +3,8 @@ body{
 }
 
 .contact-form{
-    box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 20px;
 }
 .contact-form input{
     box-shadow: none !important;
@@ -36,9 +37,6 @@ body{
     .s-button{
         display: flex;
         justify-content: center;
-    }
-    .s-button input{
-        font-size: 0.8em;
     }
     .s-hobby > div{
         display: grid !important;

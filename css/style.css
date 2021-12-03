@@ -9,6 +9,9 @@ body{
     background: white url(/assets/bg1.png) no-repeat;
     background-size: 100% 768px;
 }
+.main-nav{
+    box-shadow: 0 0 5px #eeeeee;
+}
 .nav-mid a{
     color: #000;
     font-weight: 700;
@@ -154,6 +157,8 @@ body{
     body{
         background: url(/assets/bg2.jfif) no-repeat;
         background-size: 100%;
+        background-position: 0 55px;
+        /* background-size: 100%; */
     }
     .search-icon{
         display: none;
@@ -170,6 +175,9 @@ body{
         height: 100vh;
         margin-top: 0.91em !important;
         /* border: none; */
+        border: none;
+        border-radius: 0;
+        margin-left: -12px;
     }
     .banner{
         /* background: green; */
@@ -197,7 +205,7 @@ body{
         font-size: 1em ;
     }
     .left-content1{
-        margin-top: 67% !important;
+        margin-top: 72% !important;
     }
     .left-links{
         margin-top: 1.8em;
