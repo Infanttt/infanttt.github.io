@@ -5,14 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/biodata.css">
+    <link rel="stylesheet" href="/css/contact_us.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.0/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <title>Biodata</title>
+    <title>Document</title>
 </head>
 <body>
-
     <!-- navigation -->
     <div class="container-fluid bg-white sticky-top">
         <nav class="navbar navbar-expand-xl">
@@ -93,25 +92,74 @@
 
     <!-- content -->
 
-    <div class="container mt-5 d-flex justify-content-center">
-        <div class="card bio-card" style="width: 500px;">
-            <div class="bio-img1"><img src="/assets/barca.jpg" alt="barca-logo"></div>
-            <div class="bio-img2"><img src="/assets/my-pic.png" alt="mypic"></div>
-            <div class="card-body text-center">
-                <h4 class="card-title">Infant</h4>
-                <h6 class="card-text">Male</h6>
-                <h6 class="card-text">Student</h6>
-                <h6 class="card-text">Ugly</h6>
-                <h6 class="card-text">Idiot</h6>
-                <p class="p-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo neque doloribus dicta, maxime totam vero eos velit debitis omnis facere dolore rerum possimus nesciunt tenetur officia labore alias ipsam voluptatibus.</p>
+    <div class="container mt-5 contact-form">
+        <form action="#" class="p-4">
+            <h1 class="text-center" style="font-weight: 600;">Form</h1>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mb-3 mt-3">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Masukkan username Anda" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda" name="password" required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="mt-3 mb-3">
+                        <label for="address">Alamat</label>
+                        <input type="textarea" class="form-control" id="address" placeholder="Masukkan alamat Anda" name="address" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="religion">Agama</label>
+                            <div>
+                                <select class="form-control" name="religion" id="religion" required>
+                                    <option value="">Pilih Agama</option>
+                                    <option value="kristen">Kristen</option>
+                                    <option value="katolik">Katolik</option>
+                                    <option value="islam">Islam</option>
+                                    <option value="hindu">Hindu</option>
+                                    <option value="buddha">Buddha</option>
+                                    <option value="konghucu">Konghucu</option>
+                                    <option value="atheis">Atheis</option>
+                                </select>
+                            </div>
+                    </div>
+                    <div class="mb-3 s-gender">
+                        <label for="gender">Jenis Kelamin</label>
+                        <div class="form-control d-flex" style="border: 1px solid white;">
+                            <div><input type="radio" name="gender" value="laki-laki" required>Laki-laki</div>
+                            <div><input type="radio" name="gender" value="perempuan" required>Perempuan</div>
+                            <div><input type="radio" name="gender" value="lgbt" required>LGBT</div>
+                        </div>
+                    </div>
+                    <div class="mb-3 class s-hobby">
+                        <label for="hobby">Hobby</label>
+                            <div class="form-control d-flex" style="border: 1px solid white;">
+                                <div><input type="checkbox" name="hobby" value="gaming">Main game</div>
+                                <div><input type="checkbox" name="hobby" value="singing">Menyanyi</div>
+                                <div><input type="checkbox" name="hobby" value="olahraga">Olahraga</label></div>
+                                <div><input type="checkbox" name="hobby" value="others">Lainnya</div>
+                            </div>
+                    </div>
+                </div>
             </div>
-            <div class="bio-socials">
-                <a href="#"><i class='bx bxl-instagram'></i></a>
-                <a href="#"><i class='bx bxl-facebook'></i></a>
-                <a href="#"><i class='bx bxl-twitter' ></i></a>
-                <a href="#"><i class='bx bxl-tiktok' ></i></a>
-            </div>
-        </div>
+            <span class="s-button">
+                <div class="d-flex justify-content-end">
+                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="reset" class="btn btn-primary" value="Hapus">
+                </div>
+            </span>
+        </form>
     </div>
 
     <!-- footer -->
@@ -275,5 +323,6 @@
         </ul>
     </span>
     </div>
+    
 </body>
 </html>
