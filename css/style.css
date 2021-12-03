@@ -218,6 +218,12 @@ body{
         justify-content: center;
         padding: 0 !important;
     }
+    .socials{
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 991px){
     .footer{
         text-align: center;
     }
@@ -226,9 +232,6 @@ body{
     }
     .adobe-apps ul{
         border: none !important;
-    }
-    .socials{
-        display: block !important;
     }
 }
 
@@ -253,7 +256,7 @@ body{
 
 /* phone display */
 
-@media only screen and (max-width: 529px){
+@media only screen and (max-width: 550px){
     .adobe-apps ul{
         display: none !important;
     }
