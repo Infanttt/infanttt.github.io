@@ -5,6 +5,7 @@ body{
     border: none;
     box-shadow: 0 0 1em #ccc;
     border-radius: 20px !important;
+    border: none !important;
 }
 .bio-img1 img{
     width: 100%;

@@ -238,6 +238,9 @@ body{
     .footer ul{
         border: none !important;
     }
+    .footer li{
+        margin-left: -32px;
+    }
     .adobe-apps ul{
         border: none !important;
     }
@@ -256,9 +259,7 @@ body{
         justify-content: center;
     }
     .copyright li{
-        position: relative;
-        right: 55%;
-        transform: translateX(50%);
+        margin-right: 37px;
     }
 }
 
@@ -279,12 +280,5 @@ body{
 @media only screen and (max-width: 401px){
     .region{
         display: none;
-    }
-}
-@media only screen and (max-width: 334px){
-    .copyright li{
-        position: relative;
-        right: 58%;
-        transform: translateX(50%);
     }
 }
