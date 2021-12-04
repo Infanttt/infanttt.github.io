@@ -3,7 +3,7 @@ body{
 }
 .bio-card{
     border: none;
-    box-shadow: 0 0 1em #ccc;
+    box-shadow: 0 0 5px #ccc;
     border-radius: 20px !important;
     border: none !important;
 }
