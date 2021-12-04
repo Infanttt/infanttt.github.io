@@ -10,7 +10,7 @@ body{
     background-size: 100% 768px;
 }
 .main-nav{
-    box-shadow: 0 0 5px #eeeeee;
+    box-shadow: 0 0 5px #f1f1f1;
 }
 .nav-mid a{
     color: #000;
