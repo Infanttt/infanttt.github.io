@@ -46,32 +46,21 @@ body{
     font-weight: 600;
     font-size: 1.2em ;
 }
-.left-links a{
-    text-decoration: none;
-    color: #fff;
-    padding: 0.5em 1em;
-    font-weight: 600;
-    font-size: 0.9em;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-.left-links a:hover{
-    color: #fff;
-}
-.link1:hover{
-    background: #136cda;
-    transition: all 300ms ease;
-}
-.link2:hover{
-    text-decoration: underline;
-    transition: all 300ms ease;
-}
 .left-links{
-    margin-top: 3em;
+    margin-top: 2.6rem;
 }
-.link1{
-    background: #1473E6;
+.left-links a{
+    font-weight: bold;
+    font-size: 0.9em;
     border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+}
+.link2 a{
+    color: #fff;
+}
+.link2 a:hover{
+    color: #fff;
+    text-decoration: underline;
 }
 .nav-bottom{
     display: flex;
