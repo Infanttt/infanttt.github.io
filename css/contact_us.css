@@ -1,0 +1,62 @@
+body{
+    background: #fff;
+}
+
+.contact-form{
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 20px !important;
+}
+.contact-form input{
+    box-shadow: none !important;
+}
+.contact-form select{
+    box-shadow: none !important;
+}
+.s-gender div,
+.s-hobby div{
+    margin-right: 5%;
+}
+.s-gender input,
+.s-hobby input{
+    margin-right:0.3em;
+}
+.s-button input{
+    background: #1473E6;
+    color: #fff;
+    margin: 0 0.5em;
+    padding: 0.4em 1em;
+    border-radius: 20px;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 575px){
+    .contact-form{
+        width: 90% !important;
+    }
+    .s-button{
+        display: flex;
+        justify-content: center;
+    }
+    .s-hobby > div{
+        display: grid !important;
+        grid-template-columns: auto auto;
+    }
+    
+}
+
+@media only screen and (max-width: 397px){
+    .s-gender > div{
+        display: grid !important;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width: 350px){
+    .s-gender > div{
+        display: block !important;
+    }
+    .s-hobby > div{
+        display: block !important;
+    }
+}
