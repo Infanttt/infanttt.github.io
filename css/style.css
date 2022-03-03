@@ -1,283 +1,153 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&display=swap');
-
-*{
-    font-family: 'Assistant', sans-serif !important;
-}
 body{
     margin: 0;
     padding: 0;
-    background: white url(/assets/bg1.png) no-repeat;
-    background-size: 100% 768px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
-.main-nav{
-    box-shadow: 0 0 5px #f1f1f1;
+#navig{
+    height: 100vh !important;
+    position: fixed;
+    transition: 300ms ease;
 }
-.nav-mid a{
-    color: #000;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    padding: 0.7em 1.5em !important;
+.navi{
+    width: 300px;
+}
+.profile a{
+    display: block !important;
+    background: linear-gradient(to right, #eddeff, #efe2ff, #fcf9ff);
+    background-position: right;
+    color: #000 !important;
+    background-size: 200%;
+    transition: background-position 500ms ease-in-out;
+}
+.profile a:hover{
+    background-position: left;
+    transition: 500ms ease-in-out;
+}
+.navi button{
+    float: right;
+    background: none;
+    border: none;
+    text-decoration: none;
+}
+.navi button i{
+    font-size: 2em;
+}
+.navi a{
+    color: gray;
+    font-weight: 600;
+    transition: 300ms ease;
+    margin: 20px 40px;
+    padding: 10px 10px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
     font-size: 1em;
 }
-.nav-mid a:hover{  
+.navi a:hover:not(.profile a:hover){
+    background: linear-gradient(to right, #eddeff, #faf6ff);
     color: #000;
-    background: #f1f1f1;
+    transition: 300ms ease;
 }
-.sign-in{
+.navi i{
+    font-size: 1.5em;
+    padding: 7px;
+}
+.navbar{
+    background: #fff;
+}
+.navtoggle button{
+    position: relative;
+    background: none;
+    border: none;
+    text-decoration: none;
+    font-size: 30px;
+}
+.navactive a{
+    background: linear-gradient(to right, #eddeff, #faf6ff);
+    color: #000;
+}
+.navactive a::after{
+    content: '';
+    width: 5px;
+    height: 58px;
+    border-radius: 5px;
+    background: #9b5de5;
+    position: absolute;
+    right: 0;
+}
+.navactive i{
+    background: #fff;
+    border-radius: 10px;
+    color: #9b5de5;
+}
+#webapp{
+    transition: 300ms ease;
+    margin-left: 300px;
+    background: #f7f7f7;
+    padding: 20px 50px 50px 50px !important;
+}
+#menuBut{
+    display: none;
+}
+.open-btn button{
+    font-size: 1.7em;
+    background: none !important;
+    border: none;
+    margin: 0 0 0 5px;
+    padding: 0;
+    position: fixed;
+}
+.form1{
+    background: #fff !important;
+    box-shadow: 0 0 10px #f3f3f3;
+    border-radius: 20px;
+}
+.tTitle button{
+    float: right;
+}
+.gdata button{
     display: flex;
     align-items: center;
 }
-.sign-in a{
-    color: #000;
-    font-size: 0.9em;
-    font-weight: 600;
-    letter-spacing: -0.5px;
+input{
+    border-radius: 10px !important;
 }
-.sign-in a:hover{
-    color: #136cda;
+input:focus{
+    box-shadow: none !important;
+    border: 1px solid #9b5de5 !important;
 }
-.left-content{
-    padding: 13.5em 0 10em 0;
-    position: relative;
+button{
+    box-shadow: none !important;
+    font-weight: 500 !important;
+    border-radius: 10px !important;
+    transition: 300ms ease !important;
 }
-.left-content h1,
-.left-content h5,
-.left-links{
-   margin-left: 17%;
+button:hover{
+    opacity: 90%;
+    transition: 300ms ease;
 }
-.left-content h1{
-    font-weight: 700;
-    padding-bottom: 0.5em;
-}
-.left-content h5{
-    font-weight: 600;
-    font-size: 1.2em ;
-}
-.left-links{
-    margin-top: 2.6rem;
-}
-.left-links a{
-    font-weight: bold;
-    font-size: 0.9em;
+.tab{
+    background: #fff;
     border-radius: 20px;
-    padding: 0.3rem 0.8rem;
+    box-shadow: 0 0 10px #f3f3f3;
 }
-.link2 a{
-    color: #fff;
-}
-.link2 a:hover{
-    color: #fff;
-    text-decoration: underline;
-}
-.nav-bottom{
+.actalert div{
+    border-radius: 12px !important;
+    width: 300px;
+    height: 40px;
+    padding: 0;
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 135px;
-    border-bottom: 1px solid #ccc;
+    position: absolute;
+    border: none;
+    background: rgba(154, 93, 229, 0.5);
 }
-.nav-bottom ul{
-    padding: 0.3em 0;
+.actalert button{
+    background: none;
+    border: none;
 }
-.nav-bottom .title{
-    color: #000;
-    font-weight: 700;
-    font-size: 1em;
-    letter-spacing: -0.5px;
-}
-.nav-bottom .title:hover{
-    color: #000;
-}
-.nav-bottom a{
-    font-weight: 600;
-    color: #1473E6;
-    font-size: 1em;
-    letter-spacing: -0.5px;
-}
-.nav-bottom a:hover{
-    color: #1473E6;
-    text-decoration: underline;
-}
+.actalert span{
+    float: right !important;
 
-.img-link:hover{
-    text-decoration: underline;
-}
-.img-fluid a img{
-    border-radius: 0;
-}
-
-.footer li,
-.footer a{
-    text-decoration: none;
-    list-style: none;
-    color: #000;
-    font-size: 0.9em ;
-    padding: 0.2em 0;
-    transition: all 300ms ease;
-}
-.footer a:hover,
-.cookies a:hover{
-    color: #999999;
-    transition: all 300ms ease;
-}
-.footer{
-    background: #fcfcfc;
-    margin-top: 5em !important;
-}
-.footer .col-lg{
-    margin-top: 5em;
-}
-.cookies li{
-    list-style: none;
-    color: black;
-    font-size: 0.8em;
-    letter-spacing: -0.5px;
-    margin: 0 0.2em;
-}
-.cookies li a{
-    color: black;
-    text-decoration: none;
-    letter-spacing: -0.5px;
-    transition: all 300ms ease;
-}
-.region a:hover,
-.adobe-apps a:hover{
-    opacity: 0.8;
-    transition: all 300ms ease;
-}
-.dropdown ul,
-.dropdown a{
-    display: none;
-}
-
-
-/* responsive design for tablet */
-
-@media only screen and (max-width: 1199px){
-    body{
-        background: url(/assets/bg2.jfif) no-repeat;
-        background-size: 100%;
-        background-position: 0 55px;
-        /* background-size: 100%; */
-    }
-    .search-icon{
-        display: none;
-    }
-    .navmid1 ul{
-        display: none;
-    }
-    .dropdown a{
-        display: block !important;
-        /* background: blue; */
-    }
-    .dropdown ul{
-        width: 95vw;
-        height: 100vh;
-        margin-top: 0.91em !important;
-        /* border: none; */
-        border: none;
-        border-radius: 0;
-        margin-left: -12px;
-    }
-    .banner{
-        /* background: green; */
-        position: absolute;
-        left: 50%;
-        bottom: 10%;
-        transform: translateX(-50%);
-    }
-    .left-content{
-        padding: 0;
-        /* position: relative; */
-        color: black;
-    }
-    .left-content h1,
-    .left-content h5,
-    .left-links{
-       margin-left: 3%;
-    }
-    .left-content h1{
-        font-weight: 700;
-        padding-bottom: 0.3em;
-        font-size: 2.3em;
-    }
-    .left-content h5{
-        font-size: 1em ;
-    }
-    .left-content1{
-        margin-top: 72% !important;
-    }
-    .left-links{
-        margin-top: 1.8em;
-    }
-    .link2 a:hover{
-        color: #136cda;
-    }
-    .link2 a{
-        color: #136cda;
-    }
-    .nav-bottom{
-        margin-top: 2em;
-    }
-    .nav-bottom nav{
-        display: block;
-    }
-    .title2{
-        justify-content: center;
-        padding: 0 !important;
-    }
-    .socials{
-        display: block !important;
-    }
-}
-
-@media only screen and (max-width: 991px){
-    .footer{
-        text-align: center;
-    }
-    .footer ul{
-        border: none !important;
-    }
-    .footer li{
-        margin-left: -32px;
-    }
-    .adobe-apps ul{
-        border: none !important;
-    }
-}
-
-@media only screen and (max-width: 839px){
-    .copyright ul{
-        display: block !important;
-        text-align: center;
-    }
-    .slice{
-        display: none;
-    }
-    .socials ul{
-        display: flex;
-        justify-content: center;
-    }
-    .copyright li{
-        margin-right: 37px;
-    }
-}
-
-/* phone display */
-
-@media only screen and (max-width: 550px){
-    .adobe-apps ul{
-        display: none !important;
-    }
-}
-
-@media only screen and (max-width: 575px){
-    .nav-bottom nav{
-        text-align: center;
-    }
-}
-
-@media only screen and (max-width: 401px){
-    .region{
-        display: none;
-    }
 }
