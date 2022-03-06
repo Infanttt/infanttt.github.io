@@ -43,9 +43,9 @@
                 <span class="form1 p-4">
                     <div class="col-md-12">
                         <span class="d-flex">
-                            <h4 class="mb-3">Informasi Siswa</h4>
+                            <h4 class="mb-3 info">Informasi Siswa</h4>
                             <div class="mx-auto"></div>
-                            <button class="btn btn-md d-flex" v-on:click="resetForm()"
+                            <button class="btn btn-sm d-flex" v-on:click="resetForm()"
                                     style="background: #9b5de5;
                                     color: #fff;
                                     align-items: center;">
@@ -72,7 +72,7 @@
                                     <input v-model="kelas" type="text" class="form-control" id="kelas" placeholder="Masukan kelas" value="">
                                 </div>
                                 <div class="col-md-12 mb-1">
-                                    <div>konfirmasi</div>
+                                    <div class="invisible">konfirmasi</div>
                                     <button v-if="!editMode && !deleteMode" v-on:click="createSiswa" class="btn btn-md form-control" type="submit"
                                         style="background: #9b5de5;
                                         color: #fff;">
@@ -108,11 +108,11 @@
                             <th>Delete</th>
                         </tr>
                         <tr v-for="siswa in siswas">
-                            <td>{{ siswa.id }}</td>
-                            <td>{{ siswa.namaSiswa }}</td>
-                            <td>{{ siswa.nis }}</td>
-                            <td>{{ siswa.noAbsen }}</td>
-                            <td>{{ siswa.kelas }}</td>
+                            <td><span class="tRes">ID</span>{{ siswa.id }}</td>
+                            <td><span class="tRes">Nama Siswa</span>{{ siswa.namaSiswa }}</td>
+                            <td><span class="tRes">NIS</span>{{ siswa.nis }}</td>
+                            <td><span class="tRes">No. Absen</span>{{ siswa.noAbsen }}</td>
+                            <td><span class="tRes">Kelas</span>{{ siswa.kelas }}</td>
                             <td><button onclick="sTop()" title="Go to top" class="btn btn-md btn-warning" v-on:click="getEdit(siswa)">Edit<i class='bx bx-edit' style="margin-left: 3px;"></i></button></td>
                             <td><button onclick="sTop()" title="Go to top" class="btn btn-danger" v-on:click="getDelete(siswa)">Hapus<i class='bx bxs-trash-alt' style="margin-left: 3px;"></i></button></td>
                         </tr>

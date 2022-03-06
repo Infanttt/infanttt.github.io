@@ -43,9 +43,9 @@
                 <span class="form1 p-4">
                     <div class="col-md-12">
                         <span class="d-flex">
-                            <h4 class="mb-3">Informasi Guru</h4>
+                            <h4 class="mb-3 info">Informasi Guru</h4>
                             <div class="mx-auto"></div>
-                            <button class="btn btn-md d-flex" v-on:click="resetForm()"
+                            <button class="btn btn-sm d-flex" v-on:click="resetForm()"
                                     style="background: #9b5de5;
                                     color: #fff;
                                     align-items: center;">
@@ -103,10 +103,10 @@
                             <th>Delete</th>
                         </tr>
                         <tr v-for="guru in gurus">
-                            <td>{{ guru.id }}</td>
-                            <td>{{ guru.namaGuru }}</td>
-                            <td>{{ guru.noTelepon }}</td>
-                            <td>{{ guru.email }}</td>
+                            <td><span class="tRes">ID</span>{{ guru.id }}</td>
+                            <td><span class="tRes">Nama guru</span>{{ guru.namaGuru }}</td>
+                            <td><span class="tRes">No Telepon</span>{{ guru.noTelepon }}</td>
+                            <td><span class="tRes">Email</span>{{ guru.email }}</td>
                             <td><button onclick="sTop()" title="Go to top" class="btn btn-md btn-warning" v-on:click="getEdit(guru)">Edit<i class='bx bx-edit' style="margin-left: 3px;"></i></button></td>
                             <td><button onclick="sTop()" title="Go to top" class="btn btn-danger" v-on:click="getDelete(guru)">Hapus<i class='bx bxs-trash-alt' style="margin-left: 3px;"></i></button></td>
                         </tr>

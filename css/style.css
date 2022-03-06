@@ -3,6 +3,10 @@ body{
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
+.welcome{
+    background: #fff;
+    border-radius: 20px;
+}
 #navig{
     height: 100vh !important;
     position: fixed;
@@ -132,6 +136,9 @@ button:hover{
     border-radius: 20px;
     box-shadow: 0 0 10px #f3f3f3;
 }
+.tRes{
+    display: none;
+}
 .actalert div{
     border-radius: 12px !important;
     width: 300px;
@@ -169,11 +176,12 @@ footer a:hover{
         width: 250px !important;
         z-index: 100;
         box-shadow: #e0e0e0 0 0 5px;
+        /* margin-left: -250px !important; */
     }
     .navi a{
         margin: 15px 20px;
         padding: 5px 5px;
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
     .navi img{
         width: 50px;
@@ -200,10 +208,22 @@ footer a:hover{
     #mainContent{
         margin-left: 0 !important;
     }
+    .info{
+        font-size: 1.2em;
+    }
     .table td, .table th{
         display: block !important;
+        transition: 300ms ease-in-out !important;
     }
     .table th{
         display: none !important;
+    }
+    .tRes{
+        display: flex;
+        font-weight: 700;
+        transition: 300ms ease;
+    }
+    .welcome h2, .welcome h4{
+        font-size: 1.2rem;
     }
 }

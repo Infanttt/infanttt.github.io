@@ -43,9 +43,9 @@
                 <span class="form1 p-4">
                     <div class="col-md-12">
                         <span class="d-flex">
-                            <h4 class="mb-3">Informasi Nilai</h4>
+                            <h4 class="mb-3 info">Informasi Nilai</h4>
                             <div class="mx-auto"></div>
-                            <button class="btn btn-md d-flex" v-on:click="resetForm()"
+                            <button class="btn btn-sm d-flex" v-on:click="resetForm()"
                                     style="background: #9b5de5;
                                     color: #fff;
                                     align-items: center;">
@@ -80,7 +80,7 @@
                                     <input v-model="absen" type="text" class="form-control" id="absen" placeholder="Masukan nilai">
                                 </div>
                                 <div class="col-md-12 mb-1">
-                                    <div>konfirmasi</div>
+                                    <div class="invisible">konfirmasi</div>
                                     <button v-if="!editMode && !deleteMode" v-on:click="createNilai" class="btn btn-md form-control" type="submit"
                                         style="background: #9b5de5;
                                         color: #fff;">
@@ -120,14 +120,15 @@
                             <th>Hapus</th>
                         </tr>
                         <tr v-for="nilai in nilais">
-                            <td>{{ nilai.id }}</td>
-                            <td>{{ nilai.kuis }}</td>
-                            <td>{{ nilai.tugas }}</td>
-                            <td>{{ nilai.praktek }}</td>
-                            <td>{{ nilai.uts }}</td>
-                            <td>{{ nilai.uas }}</td>
-                            <td>{{ nilai.absen }}</td>
+                            <td><span class="tRes">ID</span>{{ nilai.id }}</td>
+                            <td><span class="tRes">Kuis</span>{{ nilai.kuis }}</td>
+                            <td><span class="tRes">Tugas</span>{{ nilai.tugas }}</td>
+                            <td><span class="tRes">Praktek</span>{{ nilai.praktek }}</td>
+                            <td><span class="tRes">UTS</span>{{ nilai.uts }}</td>
+                            <td><span class="tRes">UAS</span>{{ nilai.uas }}</td>
+                            <td><span class="tRes">Absen</span>{{ nilai.absen }}</td>
                             <td>
+                                <span class="tRes">Nilai Akhir</span>
                                 {{ rata2 = ((nilai.kuis*10) + 
                                     (nilai.tugas*20) + 
                                     (nilai.praktek*15) + 
