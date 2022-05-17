@@ -15,14 +15,3 @@ function sTop() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
-
-function myFunction(x) {
-  if (x.matches) {
-    document.getElementById("navig").style.marginLeft = "-300px";
-    document.getElementById("menuBut").style.display = "block";
-  }
-}
-
-let x = window.matchMedia("(max-width: 800px)")
-myFunction(x)
-x.addListener(myFunction)
