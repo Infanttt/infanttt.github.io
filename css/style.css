@@ -183,6 +183,10 @@ footer a:hover{
     color: #9b5de5;
 }
 
+form{
+    display: none;
+}
+
 /* content for clearence slip */
 
 .slip{
