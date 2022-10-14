@@ -183,7 +183,7 @@ footer a:hover{
     color: #9b5de5;
 }
 
-form{
+form:not(.upform form){
     display: none;
 }
 

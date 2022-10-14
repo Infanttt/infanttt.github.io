@@ -50,23 +50,66 @@
                     </div>
                 </span>
                 <span class="tab p-4">
-                    <div class="text-center tTitle">
-                        <span class="d-flex mb-3" style="align-items: center;">
-                            <h4>Clearence Slip</h4>
-                            <div class="mx-auto"></div>
-                            <a href="printsmp.html" class="btn btn-md" style="background: #9b5de5;
-                                            color: #fff;
-                                            border-radius: 10px;
-                                            align-items: center;">Print <i class='bx bxs-printer'></i></a>
-                        </span>
+                    <div class="tTitle">
+                        <div class="text-center mb-3">
+                            <h5>Clearence Slip SMP</h5>                      
+                        </div>
                         
                         <hr class="my-4" style="color: #9b5de5">
 
-                        <div class="cslip">
+                        <div class="upform">
+                            <form class="needs-validation">
+                                <div class="row">
+                                    <span class="invisible"><input required></span>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="tp">Tahun Pelajaran</label>
+                                        <input v-model="tp" type="text" class="form-control" id="tp" placeholder="Tahun Pelajaran">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="sem">Semester</label>
+                                        <select v-model="sem" name="sem" id="sem" class="form-control">
+                                            <option>GANJIL</option>
+                                            <option>GENAP</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="kasmp">Kepala Sekolah</label>
+                                        <input v-model="kasmp" type="text" class="form-control" id="kasmp" placeholder="kepala SMP">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="tglBerlaku">Berlaku Hingga</label>
+                                        <input v-model="tglBerlaku" type="date" class="form-control" id="tglBerlaku">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="jenisUjian">UAS / UTS</label>
+                                        <select v-model="jenisUjian" name="jenisUjian" id="jenisUjian" class="form-control">
+                                            <option>AKHIR</option>
+                                            <option>MID</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mt-4">
+                                        <button v-if="editMode" v-on:click="updateSlip" class="btn btn-md btn-warning form-control" type="submit">Update</button>
+                                        <button class="btn btn-md btn-success form-control" v-on:click="resetForm" type="reset">Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <hr class="my-4" style="color: #9b5de5">
+
+                        <div class="d-flex mb-3">
+                            <button onclick="sTop()" title="Go to top" class="btn btn-danger me-2" v-on:click="getEdit(guru)">Edit<i class='bx bx-edit' style="margin-left: 3px;"></i></button>
+                            <a href="printsmp.html" class="btn btn-md" style="background: #9b5de5;
+                                color: #fff;
+                                border-radius: 10px;
+                                align-items: center;">Print <i class='bx bxs-printer'></i></a>
+                        </div>
+
+                        <div class="text-center cslip p-5 mx-5 rounded" style="background: #1bade7;">
                             <div class="top">
                                 <img src="/assets/Logo-Amor.png" alt="logo">
                                 <p class="text-bold mb-1">
-                                    <b>SD SMP SWASTA ADVENT SEI PELANCANG KARTU UJIAN SEMESTER {{ sem }} TAHUN PELAJARAN {{ tp }}</b>
+                                    <b>SD SMP SWASTA ADVENT SEI PELANCANG KARTU UJIAN {{ jenisUjian }} SEMESTER {{ sem }} TAHUN PELAJARAN {{ tp }}</b>
                                 </p>
                             </div>
                             <table>
@@ -100,7 +143,7 @@
                             </table>
 
                             <div class="bot">
-                                <p class="p-0 m-0">Sei Pelancang, <span id="date"></span> <span id="month"></span> <span id="year"></span></p>
+                                <p id="date" class="p-0 m-0">Sei Pelancang, {{ date }}</p>
                                 <p class="p-0 mb-4">Ka. SMP Swasta Advent Sei Pelancang</p>
                                 <p class="p-0 m-0"><b>{{ kasmp }}</b></p>
                                 <p class="p-0 m-0 text-end" style="font-size: 11px;"><em>Berlaku hingga {{ tglBerlaku }}</em></p>
@@ -124,25 +167,7 @@
         </div>
     </div>
 
-    <!-- <script>
-        //get month value
-        let myDate = new Date();
-        const month = [
-        "Januari","Februaryi","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"
-        ];
-        const m = new Date();
-        let name = month[m.getMonth()];
-        document.getElementById("month").innerHTML = name;
-
-        //get date value
-        const d = new Date();
-        document.getElementById("date").innerHTML = d.getDate();
-
-        //get year value
-        const y = new Date();
-        let year = d.getFullYear();
-        document.getElementById("year").innerHTML = year;
-    </script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
         var webapp = new Vue ({
@@ -151,14 +176,110 @@
                 errors: [],
                 message: null,
                 urname: 'Ranger Merah',
-                tp: '2021/2022',
-                sem: 'GENAP',
-                tglBerlaku: '4 Juni 2022',
-                kasd: 'Pasti Simbolon, S.Pd',
-                kasmp: 'Hotben Simbolon, S.Pd',
-                jk1: 'Laki-laki',
-                jk2: 'Perempuan',
-                tempat: 'Sei Pelancang'
+                slipIdEdit: null,
+                editMode: false,
+                tp: '',
+                sem: '',
+                tglBerlaku: '',
+                kasd: '',
+                kasmp: '',
+                jk1: '',
+                jk2: '',
+                jenisUjian: '',
+                showDateTime: null,
+                date: null
+            },
+
+            methods:{
+                getCurrentDateTime(){
+                    let dateTime = new Date();
+                    this.showDateTime = date;
+                    this.date = dateTime.toLocaleDateString();
+                    console.log(date);
+                }
+            },
+
+            created(){
+                this.getCurrentDateTime();
+            },
+            mounted: function() {
+                this.getslip();
+            },
+            methods: {
+                getSlip() {
+                    axios.get('https://6284a41ca48bd3c40b72da88.mockapi.io/slip')
+                        .then(response => {
+                            this.slips = response.data;
+                            console.log(response);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                },
+                createSlip: function(){
+                    axios.post('https://6284a41ca48bd3c40b72da88.mockapi.io/slip', {
+                        tp: this.tp,
+                        sem: this.sem,
+                        tglBerlaku: this.tglBerlaku,
+                        kasd: this.kasd,
+                        kasmp: this.kasmp,
+                        jk1: this.jk1,
+                        jk2: this.jk2,
+                        jenisUjian: this.jenisUjian
+                    })
+                    .then(response => {
+                            this.getSlip();
+                            this.message = "Data anda telah ditambahkan";
+                            console.log(response);
+                    })
+                    .catch(error => {
+                            console.log(error);
+                    });
+                },
+                resetForm: function () {
+                    this.message = null;
+                    this.editMode = false;
+                    this.slipIdEdit = null;
+                    this.tp = null;
+                    this.sem = null;
+                    this.tglBerlaku = null;
+                    this.kasd = null;
+                    this.kasmp = null;
+                    this.jk1 = null;
+                    this.jk2 = null;
+                    this.jenisUjian = null;
+                },
+                getEdit: function (slip) {
+                    this.message = null;
+                    this.editMode = true;
+                    this.tp = slip.tp;
+                    this.sem = slip.sem;
+                    this.tglBerlaku = slip.tglBerlaku;
+                    this.kasd = slip.kasd;
+                    this.kasmp = slip.kasmp;
+                    this.jk1 = slip.jk1;
+                    this.jk2 = slip.jk2;
+                    this.jenisUjian = slip.jenisUjian;
+                },
+                updateSlip: function () {
+                    axios.put(`https://6284a41ca48bd3c40b72da88.mockapi.io/slip/${this.slipIdEdit}`, {
+                        tp: this.tp,
+                        sem: this.sem,
+                        tglBerlaku: this.tglBerlaku,
+                        kasd: this.kasd,
+                        kasmp: this.kasmp,
+                        jk1: this.jk1,
+                        jk2: this.jk2,
+                        jenisUjian: this.jenisUjian
+                        })
+                        .then(res => {
+                            this.message = "Berhasil diubah";
+                            this.getSlip();
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                }
             }
         })
     </script>
