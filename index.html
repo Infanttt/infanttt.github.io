@@ -2,64 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="/javaScript/script.js"></script>
-    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Visitor Details</title>
 </head>
-<body>
-    <div id="webapp" class="container-fluid p-0 d-flex">
-        <div>
-            <div id="navig" class="navi">
-                <button class="close-btn" onclick="closeBut()"><i class='bx bx-x'></i></button>
-                <br>
-                <span class="profile text-center">
-                    <a href="#" class="nav-link">
-                        <img src="/assets/rangerMerah.jpg" alt="User's Pict" width="70px" style="border-radius: 50%;">
-                        <div style="padding: 0 10px;">Ranger Merah</div>
-                    </a>
-                </span>
-                <span class="navactive"><a href="index.html" class="nav-link"><i class='bx bxs-home' style="margin-right: 1em;"></i>Home</a></span>
-                <span><a href="dataguru.html" class="nav-link"><i class='bx bxs-book-alt' style="margin-right: 1em;"></i>Data Guru</a></span>
-                <span><a href="nilaisiswa.html" class="nav-link"><i class='bx bxs-book-content' style="margin-right: 1em;"></i>Nilai Siswa</a></span>
-                <span><a href="siswa.html" class="nav-link"><i class='bx bxs-group' style="margin-right: 1em;"></i>Daftar Siswa</a></span>
-                <span><a href="matapelajaran.html" class="nav-link"><i class='bx bxs-calendar' style="margin-right: 1em;"></i>Mata Pelajaran</a></span>
-                <span><a href="slip.html" class="nav-link"><i class='bx bxs-id-card' style="margin-right: 1em;"></i>Clearence Slip</a></span>
+<body class="bg-stone-800 text-white">
+    <div id="app">
+        <header class="py-4 bg-stone-950">
+            <div class="container px-4 mx-auto md:px-12 lg:px-24">
+                <h1 class="font-bold text-2xl">Visitors Count</h1>
             </div>
-        </div>
-        <span id="menuBut" class="open-btn">
-            <button onclick="openBut()"><i class='bx bx-menu'></i></button>
-        </span>
-        <div id="mainContent" class="container-fluid">
-            <h2>Hai, Ranger Merah 👋</h2>
-            <h5 class="mb-5 text-muted">Selamat datang, senang bertemu dengan mu!</h5>
-            <hr style="color: #9b5de5">
+        </header>
+        <div class="container mx-auto px-4 mt-10 md:px-12 lg:px-24">
+            <!-- Visitors Table -->
+            <section>
+                <h2 class="text-xl font-semibold mb-2">Web Dev Portfolio (Visitors: {{ visitors.length }})</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
+                        <thead class="bg-stone-900 text-white">
+                            <tr>
+                                <th class="py-3 px-6 text-left">No.</th>
+                                <th class="py-3 px-6 text-left">Browser</th>
+                                <th class="py-3 px-6 text-left">Device Name</th>
+                                <th class="py-3 px-6 text-left">Visited At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(visitor, index) in visitors" :key="visitor.id" class="border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6">{{ index + 1 }}</td>
+                                <td class="py-3 px-6">{{ visitor.browser }}</td>
+                                <td class="py-3 px-6">{{ visitor.device_name }}</td>
+                                <td class="py-3 px-6">{{ formatDate(visitor.visit_at) }}</td>
+                            </tr>
+                            <tr v-if="visitors.length === 0" class="border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6" colspan="4">No data found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-            <div class="welcome text-center pt-5 pb-5 mb-5 mt-5">
-                <h2>Project Mid Pemrograman Web II<br>Frisky Infant Limbong<br></h2>
-                <h4>Jurusan<br>Sistem Informasi</h4>
-            </div>
+            <hr class="border-white my-20">
 
-            <footer class="mt-5 pt-5 text-muted text-center text-small">
-                <p class="mb-1">&copy; 2022 FTI UNAI</p>
-                <ul class="list-inline">
-                  <li class="list-inline-item"><a href="#">Privacy</a></li>
-                  <li class="list-inline-item"><a href="#">Terms</a></li>
-                  <li class="list-inline-item"><a href="#">Support</a></li>
-                  <li class="list-inline-item"><a href="#">Contact</a></li>
-                  <li class="list-inline-item"><a href="#">About</a></li>
-                </ul>
-              </footer>
+            <!-- Visitors 2 Table -->
+            <section>
+                <h2 class="text-xl font-semibold mb-2">Designer Portfolio (Visitors: {{ visitoors.length }})</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
+                        <thead class="bg-stone-900 text-white">
+                            <tr>
+                                <th class="py-3 px-6 text-left">No.</th>
+                                <th class="py-3 px-6 text-left">Browser</th>
+                                <th class="py-3 px-6 text-left">Device Name</th>
+                                <th class="py-3 px-6 text-left">Visited At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(visitoor, index) in visitoors" :key="visitoor.id" class="border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6">{{ index + 1 }}</td>
+                                <td class="py-3 px-6">{{ visitoor.browser }}</td>
+                                <td class="py-3 px-6">{{ visitoor.device }}</td>
+                                <td class="py-3 px-6">{{ formatDate(visitoor.visited_at) }}</td>
+                            </tr>
+                            <tr v-if="visitoors.length === 0" class="border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6 text-center" colspan="4">No data found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
+
+        <footer class="px-4 mt-24 text-center py-6 bg-stone-900 md:px-12 lg:px-24">
+            <h1>2024 Frisky Infant Limbong</h1>
+        </footer>
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    visitors: [],
+                    visitoors: [],
+                };
+            },
+            created() {
+                axios.get('https://663b9626fee6744a6ea2331e.mockapi.io/visitor_details')
+                    .then(response => {
+                        this.visitors = response.data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching visitor data:', error);
+                    });
+
+                axios.get('https://66716950e083e62ee43b7c51.mockapi.io/visitor_details')
+                    .then(response => {
+                        this.visitoors = response.data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching visitoors data:', error);
+                    });
+            },
+            methods: {
+                formatDate(dateString) {
+                    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
+                    const date = new Date(dateString);
+                    return date.toLocaleDateString('en-US', options);
+                }
+            }
+        });
+
+        app.mount('#app');
     </script>
 </body>
 </html>
