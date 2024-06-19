@@ -18,7 +18,10 @@
         <div class="container mx-auto px-4 mt-10 md:px-12 lg:px-24">
             <!-- Visitors Table -->
             <section>
-                <h2 class="text-xl font-semibold mb-2">Web Dev Portfolio (Visitors: {{ visitors.length }})</h2>
+                <div class="flex items-center justify-between w-full mb-2">
+                    <h2 class="text-xl font-semibold">Web Dev Portfolio</h2>
+                    <h2 class="text-xl font-semibold">Total: {{ visitors.length }}</h2>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
                         <thead class="bg-stone-900 text-white">
@@ -48,7 +51,10 @@
 
             <!-- Visitors 2 Table -->
             <section>
-                <h2 class="text-xl font-semibold mb-2">Designer Portfolio (Visitors: {{ visitoors.length }})</h2>
+                <div class="flex items-center justify-between w-full mb-2">
+                    <h2 class="text-xl font-semibold">Web Dev Portfolio</h2>
+                    <h2 class="text-xl font-semibold">Total: {{ visitoors.length }}</h2>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
                         <thead class="bg-stone-900 text-white">
