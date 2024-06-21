@@ -10,7 +10,7 @@
 </head>
 <body class="bg-stone-800 text-white">
     <div id="app">
-        <header class="py-4 bg-stone-950">
+        <header class="py-4 bg-stone-900 sticky top-0">
             <div class="container px-4 mx-auto md:px-12 lg:px-24">
                 <h1 class="font-bold text-2xl">Visitors Count</h1>
             </div>
@@ -19,8 +19,10 @@
             <!-- Visitors Table -->
             <section>
                 <div class="flex items-center justify-between w-full mb-2">
-                    <h2 class="text-xl font-semibold">Web Dev Portfolio</h2>
-                    <h2 class="text-xl font-semibold">Total: {{ visitors.length }}</h2>
+                    <h2 class="text-xl font-semibold">WD: {{ visitors.length }}</h2>
+                    <select v-model="perPage" id="perPage" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
+                        <option v-for="option in perPageOptions" :key="option" :value="option">{{ option === 10000 ? 'All' : option }}</option>
+                    </select>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
@@ -28,13 +30,13 @@
                             <tr>
                                 <th class="py-3 px-6 text-left">No.</th>
                                 <th class="py-3 px-6 text-left">Browser</th>
-                                <th class="py-3 px-6 text-left">Device Name</th>
-                                <th class="py-3 px-6 text-left">Visited At</th>
+                                <th class="py-3 px-6 text-left">Device</th>
+                                <th class="py-3 px-6 text-left">Visited</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(visitor, index) in visitors" :key="visitor.id" class="border-b border-gray-700 hover:bg-stone-700">
-                                <td class="py-3 px-6">{{ index + 1 }}</td>
+                            <tr v-for="(visitor, index) in paginatedVisitors" :key="visitor.id" class="odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6">{{ index + 1 + (currentPage - 1) * perPage }}.</td>
                                 <td class="py-3 px-6">{{ visitor.browser }}</td>
                                 <td class="py-3 px-6">{{ visitor.device_name }}</td>
                                 <td class="py-3 px-6">{{ formatDate(visitor.visit_at) }}</td>
@@ -45,6 +47,13 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="overflow-x-auto text-end mt-5">
+                    <div>
+                        <button @click="prevPage" :disabled="currentPage === 1" class="bg-stone-700 py-2 px-4 rounded-l-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage === 1, 'hover:bg-stone-600': currentPage !== 1 }">Prev</button>
+                        <button v-for="page in totalPages" :key="page" @click="goToPage(page)" :class="['py-2 px-4', { 'bg-stone-600': page === currentPage, 'bg-stone-700 hover:bg-stone-600': page !== currentPage }]">{{ page }}</button>
+                        <button @click="nextPage" :disabled="currentPage === totalPages" class="bg-stone-700 py-2 px-4 rounded-r-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage === totalPages, 'hover:bg-stone-600': currentPage !== totalPages }">Next</button>
+                    </div>
+                </div>              
             </section>
 
             <hr class="border-white my-20">
@@ -52,8 +61,10 @@
             <!-- Visitors 2 Table -->
             <section>
                 <div class="flex items-center justify-between w-full mb-2">
-                    <h2 class="text-xl font-semibold">Web Dev Portfolio</h2>
-                    <h2 class="text-xl font-semibold">Total: {{ visitoors.length }}</h2>
+                    <h2 class="text-xl font-semibold">GD: {{ visitoors.length }}</h2>
+                    <select v-model="perPage2" id="perPage2" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
+                        <option v-for="option in perPageOptions" :key="option" :value="option">{{ option === 10000 ? 'All' : option }}</option>
+                    </select>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
@@ -61,13 +72,13 @@
                             <tr>
                                 <th class="py-3 px-6 text-left">No.</th>
                                 <th class="py-3 px-6 text-left">Browser</th>
-                                <th class="py-3 px-6 text-left">Device Name</th>
-                                <th class="py-3 px-6 text-left">Visited At</th>
+                                <th class="py-3 px-6 text-left">Device</th>
+                                <th class="py-3 px-6 text-left">Visited</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(visitoor, index) in visitoors" :key="visitoor.id" class="border-b border-gray-700 hover:bg-stone-700">
-                                <td class="py-3 px-6">{{ index + 1 }}</td>
+                            <tr v-for="(visitoor, index) in paginatedVisitoors" :key="visitoor.id" class="odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6">{{ index + 1 + (currentPage2 - 1) * perPage2 }}.</td>
                                 <td class="py-3 px-6">{{ visitoor.browser }}</td>
                                 <td class="py-3 px-6">{{ visitoor.device }}</td>
                                 <td class="py-3 px-6">{{ formatDate(visitoor.visited_at) }}</td>
@@ -78,11 +89,18 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="overflow-x-auto text-end mt-5">
+                    <div>
+                        <button @click="prevPage2" :disabled="currentPage2 === 1" class="bg-stone-700 py-2 px-4 rounded-l-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage2 === 1, 'hover:bg-stone-600': currentPage2 !== 1 }">Prev</button>
+                        <button v-for="page in totalPages2" :key="page" @click="goToPage2(page)" :class="['py-2 px-4', { 'bg-stone-600': page === currentPage2, 'bg-stone-700 hover:bg-stone-600': page !== currentPage2 }]">{{ page }}</button>
+                        <button @click="nextPage2" :disabled="currentPage2 === totalPages2" class="bg-stone-700 py-2 px-4 rounded-r-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage2 === totalPages2, 'hover:bg-stone-600': currentPage2 !== totalPages2 }">Next</button>
+                    </div>
+                </div>
             </section>
         </div>
 
         <footer class="px-4 mt-24 text-center py-6 bg-stone-900 md:px-12 lg:px-24">
-            <h1>2024 Frisky Infant Limbong</h1>
+            <h1>&copy; 2024 Frisky Infant Limbong</h1>
         </footer>
     </div>
 
@@ -92,12 +110,75 @@
                 return {
                     visitors: [],
                     visitoors: [],
+                    perPage: 10,
+                    perPage2: 10,
+                    currentPage: 1,
+                    currentPage2: 1,
+                    perPageOptions: [10, 20, 30, 50, 10000],
                 };
+            },
+            computed: {
+                paginatedVisitors() {
+                    const start = (this.currentPage - 1) * this.perPage;
+                    const end = this.perPage === 0 ? this.visitors.length : start + this.perPage;
+                    return this.visitors.slice(start, end);
+                },
+                totalPages() {
+                    return Math.ceil(this.visitors.length / this.perPage);
+                },
+                paginatedVisitoors() {
+                    const start = (this.currentPage2 - 1) * this.perPage2;
+                    const end = this.perPage2 === 0 ? this.visitoors.length : start + this.perPage2;
+                    return this.visitoors.slice(start, end);
+                },
+                totalPages2() {
+                    return Math.ceil(this.visitoors.length / this.perPage2);
+                }
+            },
+            methods: {
+                formatDate(dateString) {
+                    const date = new Date(dateString);
+                    const today = new Date();
+                    const differenceInTime = today.getTime() - date.getTime();
+                    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+                    const options = { hour: '2-digit', minute: '2-digit', hour12: true };
+
+                    if (differenceInDays < 1 && today.getDate() === date.getDate()) {
+                        return `Today at ${date.toLocaleTimeString('en-US', options)}`;
+                    } else if (differenceInDays < 2) {
+                        return `Yesterday at ${date.toLocaleTimeString('en-US', options)}`;
+                    } else if (differenceInDays < 3) {
+                        return `2 days ago at ${date.toLocaleTimeString('en-US', options)}`;
+                    }
+
+                    const dateOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
+                    return date.toLocaleDateString('en-US', dateOptions);
+                },
+
+                prevPage() {
+                    if (this.currentPage > 1) this.currentPage--;
+                },
+                nextPage() {
+                    if (this.currentPage < this.totalPages) this.currentPage++;
+                },
+                goToPage(page) {
+                    this.currentPage = page;
+                },
+                prevPage2() {
+                    if (this.currentPage2 > 1) this.currentPage2--;
+                },
+                nextPage2() {
+                    if (this.currentPage2 < this.totalPages2) this.currentPage2++;
+                },
+                goToPage2(page) {
+                    this.currentPage2 = page;
+                },
             },
             created() {
                 axios.get('https://663b9626fee6744a6ea2331e.mockapi.io/visitor_details')
                     .then(response => {
-                        this.visitors = response.data;
+                        this.visitors = response.data.reverse();
                     })
                     .catch(error => {
                         console.error('Error fetching visitor data:', error);
@@ -105,18 +186,11 @@
 
                 axios.get('https://66716950e083e62ee43b7c51.mockapi.io/visitor_details')
                     .then(response => {
-                        this.visitoors = response.data;
+                        this.visitoors = response.data.reverse();
                     })
                     .catch(error => {
                         console.error('Error fetching visitoors data:', error);
                     });
-            },
-            methods: {
-                formatDate(dateString) {
-                    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
-                    const date = new Date(dateString);
-                    return date.toLocaleDateString('en-US', options);
-                }
             }
         });
 
