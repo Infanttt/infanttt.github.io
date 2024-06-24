@@ -6,7 +6,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <title>Visitor Details</title>
+    <title>Data Table</title>
+    <script>
+        const passKey = "qwerty";
+        let enteredKey = prompt("Please enter the passkey to access this page:");
+
+        if (enteredKey !== passKey) {
+            alert("Incorrect passkey. You are not allowed to access this page.");
+            window.location.href = "https://www.infanttt.github.io";
+        }
+    </script>
 </head>
 <body class="bg-stone-800 text-white">
     <div id="app">
