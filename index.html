@@ -106,6 +106,48 @@
                     </div>
                 </div>
             </section>
+            
+            <hr class="border-white my-20">
+
+            <!-- Image likes Table -->
+            <section>
+                <div class="flex items-center justify-between w-full mb-2">
+                    <h2 class="text-xl font-semibold">Image: {{ likes.length }}</h2>
+                    <select v-model="perPage3" id="perPage3" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
+                        <option v-for="option in perPageOptions" :key="option" :value="option">{{ option === 10000 ? 'All' : option }}</option>
+                    </select>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
+                        <thead class="bg-stone-900 text-white">
+                            <tr>
+                                <th class="py-3 px-6 text-left">No.</th>
+                                <th class="py-3 px-6 text-left">Title</th>
+                                <th class="py-3 px-6 text-left">Likes</th>
+                                <th class="py-3 px-6 text-left">Last Liked At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(like, index) in paginatedLikes" :key="visitoor.id" class="odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6">{{ index + 1 + (currentPage3 - 1) * perPage3 }}.</td>
+                                <td class="py-3 px-6">{{ like.title }}</td>
+                                <td class="py-3 px-6">{{ like.total_likes }}</td>
+                                <td class="py-3 px-6">{{ formatDate(like.liked_on) }}</td>
+                            </tr>
+                            <tr v-if="likes.length === 0" class="border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6 text-center" colspan="4">No data found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="overflow-x-auto text-end mt-5">
+                    <div>
+                        <button @click="prevPage3" :disabled="currentPage3 === 1" class="bg-stone-700 py-2 px-4 rounded-l-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage3 === 1, 'hover:bg-stone-600': currentPage3 !== 1 }">Prev</button>
+                        <button v-for="page in totalPages3" :key="page" @click="goToPage3(page)" :class="['py-2 px-4', { 'bg-stone-600': page === currentPage3, 'bg-stone-700 hover:bg-stone-600': page !== currentPage3 }]">{{ page }}</button>
+                        <button @click="nextPage3" :disabled="currentPage3 === totalPages3" class="bg-stone-700 py-2 px-4 rounded-r-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage3 === totalPages3, 'hover:bg-stone-600': currentPage3 !== totalPages3 }">Next</button>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <footer class="px-4 mt-24 text-center py-6 bg-stone-900 md:px-12 lg:px-24">
@@ -119,10 +161,13 @@
                 return {
                     visitors: [],
                     visitoors: [],
+                    likes: [],
                     perPage: 10,
                     perPage2: 10,
+                    perPage3: 10,
                     currentPage: 1,
                     currentPage2: 1,
+                    currentPage3: 1,
                     perPageOptions: [10, 20, 30, 50, 10000],
                 };
             },
@@ -142,7 +187,15 @@
                 },
                 totalPages2() {
                     return Math.ceil(this.visitoors.length / this.perPage2);
-                }
+                },
+                paginatedLikes() {
+                    const start = (this.currentPage3 - 1) * this.perPage3;
+                    const end = this.perPage3 === 0 ? this.likes.length : start + this.perPage3;
+                    return this.likes.slice(start, end);
+                },
+                totalPages3() {
+                    return Math.ceil(this.likes.length / this.perPage3);
+                },
             },
             methods: {
                 formatDate(dateString) {
@@ -183,6 +236,15 @@
                 goToPage2(page) {
                     this.currentPage2 = page;
                 },
+                prevPage3() {
+                    if (this.currentPage3 > 1) this.currentPage3--;
+                },
+                nextPage3() {
+                    if (this.currentPage3 < this.totalPages3) this.currentPage3++;
+                },
+                goToPage3(page) {
+                    this.currentPage2 = page;
+                },
             },
             created() {
                 axios.get('https://663b9626fee6744a6ea2331e.mockapi.io/visitor_details')
@@ -196,6 +258,14 @@
                 axios.get('https://66716950e083e62ee43b7c51.mockapi.io/visitor_details')
                     .then(response => {
                         this.visitoors = response.data.reverse();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching visitoors data:', error);
+                    });
+                
+                axios.get('https://663b9626fee6744a6ea2331e.mockapi.io/likes')
+                    .then(response => {
+                        this.visitoors = response.data;
                     })
                     .catch(error => {
                         console.error('Error fetching visitoors data:', error);
