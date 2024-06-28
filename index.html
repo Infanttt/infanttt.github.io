@@ -128,7 +128,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(like, index) in paginatedLikes" :key="visitoor.id" class="odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
+                            <tr v-for="(like, index) in paginatedLikes" :key="like.id" class="odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
                                 <td class="py-3 px-6">{{ index + 1 + (currentPage3 - 1) * perPage3 }}.</td>
                                 <td class="py-3 px-6">{{ like.title }}</td>
                                 <td class="py-3 px-6">{{ like.total_likes }}</td>
