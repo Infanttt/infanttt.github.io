@@ -265,10 +265,10 @@
                 
                 axios.get('https://663b9626fee6744a6ea2331e.mockapi.io/likes')
                     .then(response => {
-                        this.visitoors = response.data;
+                        this.likes = response.data;
                     })
                     .catch(error => {
-                        console.error('Error fetching visitoors data:', error);
+                        console.error('Error fetching likes data:', error);
                     });
             }
         });
