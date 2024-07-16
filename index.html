@@ -6,8 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/excellentexport/3.5.0/excellentexport.min.js"></script> -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/excellentexport@3.4.3/dist/excellentexport.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/excellentexport/3.5.0/excellentexport.min.js"></script>
     <title>Data Table</title>
     <script>
         const passKey = "qwerty";
@@ -34,7 +33,7 @@
                     <select v-model="perPage" id="perPage" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
                         <option v-for="option in perPageOptions" :key="option" :value="option">{{ option === 10000 ? 'All' : option }}</option>
                     </select>
-                    <a href="#" download="visitors.xlsx" @click="exportTable(this, 'visitorsTable', 'visitors.xlsx')">Export to Excel</a>
+                    <a href="#" download="visitors.xlsx" @click="exportTable('visitorsTable', 'visitors.xlsx')">Export to Excel</a>
                 </div>
                 <div class="overflow-x-auto">
                     <table id="visitorsTable" class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
@@ -251,7 +250,7 @@
                     this.currentPage3 = page;
                 },
                 exportTable(tableId, filename) {
-                    ExcellentExport.excel(document.getElementById(tableId), filename);
+                    ExcellentExport.convert({ anchor: this.$el.querySelector(`[download="${filename}"]`), filename, format: 'xlsx' }, { from: tableId });
                 }
             },
             created() {
