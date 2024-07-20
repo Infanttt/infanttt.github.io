@@ -44,6 +44,11 @@
                                 <th class="py-3 px-6 text-left">No.</th>
                                 <th class="py-3 px-6 text-left">Browser</th>
                                 <th class="py-3 px-6 text-left">Device</th>
+                                <th class="py-3 px-6 text-left">Location</th>
+                                <th class="py-3 px-6 text-left">Hostname</th>
+                                <th class="py-3 px-6 text-left">Coordinate</th>
+                                <th class="py-3 px-6 text-left">IPv4</th>
+                                <th class="py-3 px-6 text-left">IPv6</th>
                                 <th class="py-3 px-6 text-left">Visited</th>
                             </tr>
                         </thead>
@@ -52,6 +57,11 @@
                                 <td class="py-3 px-6">{{ index + 1 + (currentPage - 1) * perPage }}.</td>
                                 <td class="py-3 px-6">{{ visitor.browser }}</td>
                                 <td class="py-3 px-6">{{ visitor.device_name }}</td>
+                                <td class="py-3 px-6">{{ visitor.location }}</td>
+                                <td class="py-3 px-6">{{ visitor.hostname }}</td>
+                                <td class="py-3 px-6"><a class="hover:underline" :href="generateGoogleMapsLink(visitior.coordinate)" target="_blank">{{ visitor.coordinate }}</a></td>
+                                <td class="py-3 px-6">{{ visitor.ipv4 }}</td>
+                                <td class="py-3 px-6">{{ visitor.ipv6 }}</td>
                                 <td class="py-3 px-6">{{ formatDate(visitor.visit_at) }}</td>
                             </tr>
                             <tr v-if="visitors.length === 0" class="border-b border-gray-700 hover:bg-stone-700">
@@ -179,6 +189,10 @@
                     currentPage2: 1,
                     currentPage3: 1,
                     perPageOptions: [10, 20, 30, 50, 10000],
+                };
+                const googleMapsBaseUrl = 'https://www.google.com/maps/search/?api=1&query=';
+                const generateGoogleMapsLink = (coordinates) => {
+                    return `${googleMapsBaseUrl}${encodeURIComponent(coordinates)}`;
                 };
             },
             computed: {
