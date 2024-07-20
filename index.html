@@ -53,16 +53,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(visitor, index) in paginatedVisitors" :key="visitor.id" class="odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
-                                <td class="py-3 px-6">{{ index + 1 + (currentPage - 1) * perPage }}.</td>
-                                <td class="py-3 px-6">{{ visitor.browser }}</td>
-                                <td class="py-3 px-6">{{ visitor.device_name }}</td>
-                                <td class="py-3 px-6">{{ visitor.location }}</td>
-                                <td class="py-3 px-6">{{ visitor.hostname }}</td>
-                                <td class="py-3 px-6"><a class="hover:underline" :href="generateGoogleMapsLink(visitor.coordinate)" target="_blank">{{ visitor.coordinate }}</a></td>
-                                <td class="py-3 px-6">{{ visitor.ipv4 }}</td>
-                                <td class="py-3 px-6">{{ visitor.ipv6 }}</td>
-                                <td class="py-3 px-6">{{ formatDate(visitor.visit_at) }}</td>
+                            <tr v-for="(visitor, index) in paginatedVisitors" :key="visitor.id" class="flex odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6 shrink-0">{{ index + 1 + (currentPage - 1) * perPage }}.</td>
+                                <td class="py-3 px-6 shrink-0">{{ visitor.browser }}</td>
+                                <td class="py-3 px-6 shrink-0">{{ visitor.device_name }}</td>
+                                <td class="py-3 px-6 shrink-0">{{ visitor.location }}</td>
+                                <td class="py-3 px-6 shrink-0">{{ visitor.hostname }}</td>
+                                <td class="py-3 px-6 shrink-0"><a class="hover:underline" :href="generateGoogleMapsLink(visitor.coordinate)" target="_blank">{{ visitor.coordinate }}</a></td>
+                                <td class="py-3 px-6 shrink-0">{{ visitor.ipv4 }}</td>
+                                <td class="py-3 px-6 shrink-0">{{ visitor.ipv6 }}</td>
+                                <td class="py-3 px-6 shrink-0">{{ formatDate(visitor.visit_at) }}</td>
                             </tr>
                             <tr v-if="visitors.length === 0" class="border-b border-gray-700 hover:bg-stone-700">
                                 <td class="py-3 px-6" colspan="4">No data found.</td>
