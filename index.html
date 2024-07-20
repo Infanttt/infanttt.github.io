@@ -32,9 +32,9 @@
                     <h2 class="text-xl font-semibold">WD: {{ visitors.length }}</h2>
                     <div class="flex items-center justify-end gap-x-2">
                         <select v-model="perPage" id="perPage" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
-                        <option v-for="option in perPageOptions" :key="option" :value="option">{{ option === 10000 ? 'All' : option }}</option>
-                    </select>
-                    <button @click="exportTable('visitorsTable', 'visitors.xlsx')" class="bg-blue-500 text-white px-4 py-2 rounded">Export to Excel</button>
+                            <option v-for="option in perPageOptions" :key="option" :value="option">{{ option === 10000 ? 'All' : option }}</option>
+                        </select>
+                        <button @click="exportTable('visitorsTable', 'visitors.xlsx')" class="bg-blue-500 text-white px-4 py-2 rounded">Export to Excel</button>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -59,7 +59,7 @@
                                 <td class="py-3 px-6">{{ visitor.device_name }}</td>
                                 <td class="py-3 px-6">{{ visitor.location }}</td>
                                 <td class="py-3 px-6">{{ visitor.hostname }}</td>
-                                <td class="py-3 px-6"><a class="hover:underline" :href="generateGoogleMapsLink(visitior.coordinate)" target="_blank">{{ visitor.coordinate }}</a></td>
+                                <td class="py-3 px-6"><a class="hover:underline" :href="generateGoogleMapsLink(visitor.coordinate)" target="_blank">{{ visitor.coordinate }}</a></td>
                                 <td class="py-3 px-6">{{ visitor.ipv4 }}</td>
                                 <td class="py-3 px-6">{{ visitor.ipv6 }}</td>
                                 <td class="py-3 px-6">{{ formatDate(visitor.visit_at) }}</td>
@@ -176,6 +176,8 @@
     </div>
 
     <script>
+        const googleMapsBaseUrl = 'https://www.google.com/maps/search/?api=1&query=';
+
         const app = Vue.createApp({
             data() {
                 return {
@@ -189,10 +191,6 @@
                     currentPage2: 1,
                     currentPage3: 1,
                     perPageOptions: [10, 20, 30, 50, 10000],
-                };
-                const googleMapsBaseUrl = 'https://www.google.com/maps/search/?api=1&query=';
-                const generateGoogleMapsLink = (coordinates) => {
-                    return `${googleMapsBaseUrl}${encodeURIComponent(coordinates)}`;
                 };
             },
             computed: {
@@ -241,7 +239,9 @@
                     const dateOptions = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
                     return date.toLocaleDateString('en-US', dateOptions);
                 },
-
+                generateGoogleMapsLink(coordinates) {
+                    return `${googleMapsBaseUrl}${encodeURIComponent(coordinates)}`;
+                },
                 prevPage() {
                     if (this.currentPage > 1) this.currentPage--;
                 },
