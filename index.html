@@ -86,7 +86,7 @@
                 <div class="flex items-center justify-between w-full mb-2">
                     <h2 class="text-xl font-semibold">VW: {{ visitoors.length }}</h2>
                     <div class="flex items-center justify-end gap-x-2">
-                        <select v-model="perPage" id="perPage" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
+                        <select v-model="perPage2" id="perPage2" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
                             <option v-for="option in perPageOptions" :key="option" :value="option">{{ option === 10000 ? 'All' : option }}</option>
                         </select>
                         <button @click="exportTable('visitoorsTable', 'visitoors.xlsx')" class="bg-blue-500 text-white px-4 py-2 rounded">Export to Excel</button>
@@ -126,12 +126,12 @@
                 <div class="overflow-x-auto text-end mt-5">
                     <div>
                         <button @click="prevPage2" :disabled="currentPage2 === 1" class="bg-stone-700 py-2 px-4 rounded-l-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage2 === 1, 'hover:bg-stone-600': currentPage2 !== 1 }">Prev</button>
-                        <button v-for="page2 in totalPages2" :key="page" @click="goToPage(page)" :class="['py-2 px-4', { 'bg-stone-600': page2 === currentPage2, 'bg-stone-700 hover:bg-stone-600': page2 !== currentPage2 }]">{{ page2 }}</button>
+                        <button v-for="page2 in totalPages2" :key="page2" @click="goToPage2(page2)" :class="['py-2 px-4', { 'bg-stone-600': page2 === currentPage2, 'bg-stone-700 hover:bg-stone-600': page2 !== currentPage2 }]">{{ page2 }}</button>
                         <button @click="nextPage2" :disabled="currentPage2 === totalPages2" class="bg-stone-700 py-2 px-4 rounded-r-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage2 === totalPages2, 'hover:bg-stone-600': currentPage2 !== totalPages2 }">Next</button>
                     </div>
                 </div>              
-            </section
-
+            </section>
+            
             <hr class="border-white my-20">
             
             <!-- 3rd Table -->
@@ -155,8 +155,8 @@
                             <tr v-for="(vale, index) in vales" :key="vale.id" class="odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
                                 <td class="py-3 px-6">{{ index + 1 }}.</td>
                                 <td class="py-3 px-6">{{ vale.valData }}</td>
-                                <td class="py-3 px-6">{{ vale.additioanl }}</td>
-                                <td class="py-3 px-6">{{ vale.pinkLink }}</td>
+                                <td class="py-3 px-6">{{ vale.additional }}</td>
+                                <td class="py-3 px-6"><a class="hover:underline" :href="vale.picLink" target="_blank">{{ vale.picLink }}</a></td>
                                 <td class="py-3 px-6">{{ formatDate(vale.updatedAt) }}</td>
                                 <td class="py-3 px-6">{{ formatDate(vale.selectedDateTime) }}</td>
                             </tr>
@@ -166,7 +166,7 @@
                         </tbody>
                     </table>
                 </div>            
-            </section
+            </section>
             
             <hr class="border-white my-20">
 
@@ -207,7 +207,7 @@
                 <div class="overflow-x-auto text-end mt-5">
                     <div>
                         <button @click="prevPage3" :disabled="currentPage3 === 1" class="bg-stone-700 py-2 px-4 rounded-l-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage3 === 1, 'hover:bg-stone-600': currentPage3 !== 1 }">Prev</button>
-                        <button v-for="page in totalPages3" :key="page" @click="goToPage3(page)" :class="['py-2 px-4', { 'bg-stone-600': page === currentPage3, 'bg-stone-700 hover:bg-stone-600': page !== currentPage3 }]">{{ page }}</button>
+                        <button v-for="page3 in totalPages3" :key="page3" @click="goToPage3(page3)" :class="['py-2 px-4', { 'bg-stone-600': page3 === currentPage3, 'bg-stone-700 hover:bg-stone-600': page3 !== currentPage3 }]">{{ page3 }}</button>
                         <button @click="nextPage3" :disabled="currentPage3 === totalPages3" class="bg-stone-700 py-2 px-4 rounded-r-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage3 === totalPages3, 'hover:bg-stone-600': currentPage3 !== totalPages3 }">Next</button>
                     </div>
                 </div>
@@ -215,7 +215,7 @@
         </div>
 
         <footer class="px-4 mt-24 text-center py-6 bg-stone-900 md:px-12 lg:px-24">
-            <h1>&copy; 2024 Frisky Infant Limbong</h1>
+            <h1>&copy; 2024 Whiskyyy.</h1>
         </footer>
     </div>
 
@@ -311,8 +311,8 @@
                 nextPage3() {
                     if (this.currentPage3 < this.totalPages3) this.currentPage3++;
                 },
-                goToPage3(page) {
-                    this.currentPage3 = page;
+                goToPage3(page3) {
+                    this.currentPage3 = page3;
                 },
                 exportTable(tableId, filename) {
                     const table = document.getElementById(tableId);
