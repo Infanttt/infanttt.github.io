@@ -84,9 +84,9 @@
             <!-- Visitors 2 Table -->
             <section>
                 <div class="flex items-center justify-between w-full mb-2">
-                    <h2 class="text-xl font-semibold">GD: {{ visitoors.length }}</h2>
+                    <h2 class="text-xl font-semibold">VW: {{ visitoors.length }}</h2>
                     <div class="flex items-center justify-end gap-x-2">
-                        <select v-model="perPage2" id="perPage2" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
+                        <select v-model="perPage" id="perPage" class="bg-stone-700 border-none px-3 py-2 rounded-md focus:outline-none">
                             <option v-for="option in perPageOptions" :key="option" :value="option">{{ option === 10000 ? 'All' : option }}</option>
                         </select>
                         <button @click="exportTable('visitoorsTable', 'visitoors.xlsx')" class="bg-blue-500 text-white px-4 py-2 rounded">Export to Excel</button>
@@ -99,6 +99,10 @@
                                 <th class="py-3 px-6 text-left">No.</th>
                                 <th class="py-3 px-6 text-left">Browser</th>
                                 <th class="py-3 px-6 text-left">Device</th>
+                                <th class="py-3 px-6 text-left">Location</th>
+                                <th class="py-3 px-6 text-left">Coordinate</th>
+                                <th class="py-3 px-6 text-left">IPv4</th>
+                                <th class="py-3 px-6 text-left">IPv6</th>
                                 <th class="py-3 px-6 text-left">Visited</th>
                             </tr>
                         </thead>
@@ -107,10 +111,14 @@
                                 <td class="py-3 px-6">{{ index + 1 + (currentPage2 - 1) * perPage2 }}.</td>
                                 <td class="py-3 px-6">{{ visitoor.browser }}</td>
                                 <td class="py-3 px-6">{{ visitoor.device }}</td>
-                                <td class="py-3 px-6">{{ formatDate(visitoor.visited_at) }}</td>
+                                <td class="py-3 px-6">{{ visitoor.location }}</td>
+                                <td class="py-3 px-6"><a class="hover:underline" :href="generateGoogleMapsLink(visitoor.coordinate)" target="_blank">{{ visitoor.coordinate }}</a></td>
+                                <td class="py-3 px-6">{{ visitoor.ipv4 }}</td>
+                                <td class="py-3 px-6">{{ visitoor.ipv6 }}</td>
+                                <td class="py-3 px-6">{{ formatDate(visitoor.visitedAt) }}</td>
                             </tr>
                             <tr v-if="visitoors.length === 0" class="border-b border-gray-700 hover:bg-stone-700">
-                                <td class="py-3 px-6 text-center" colspan="4">No data found.</td>
+                                <td class="py-3 px-6 text-center" colspan="12">No data found.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -118,11 +126,47 @@
                 <div class="overflow-x-auto text-end mt-5">
                     <div>
                         <button @click="prevPage2" :disabled="currentPage2 === 1" class="bg-stone-700 py-2 px-4 rounded-l-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage2 === 1, 'hover:bg-stone-600': currentPage2 !== 1 }">Prev</button>
-                        <button v-for="page in totalPages2" :key="page" @click="goToPage2(page)" :class="['py-2 px-4', { 'bg-stone-600': page === currentPage2, 'bg-stone-700 hover:bg-stone-600': page !== currentPage2 }]">{{ page }}</button>
+                        <button v-for="page2 in totalPages2" :key="page" @click="goToPage(page)" :class="['py-2 px-4', { 'bg-stone-600': page2 === currentPage2, 'bg-stone-700 hover:bg-stone-600': page2 !== currentPage2 }]">{{ page2 }}</button>
                         <button @click="nextPage2" :disabled="currentPage2 === totalPages2" class="bg-stone-700 py-2 px-4 rounded-r-lg" :class="{ 'hover:bg-stone-700 cursor-not-allowed': currentPage2 === totalPages2, 'hover:bg-stone-600': currentPage2 !== totalPages2 }">Next</button>
                     </div>
+                </div>              
+            </section
+
+            <hr class="border-white my-20">
+            
+            <!-- 3rd Table -->
+            <section>
+                <div class="flex items-center justify-start w-full mb-2">
+                    <h2 class="text-xl font-semibold">VR: {{ valess.length }}</h2>
                 </div>
-            </section>
+                <div class="overflow-x-auto">
+                    <table id="3rdTable" class="min-w-full bg-stone-800 shadow-md rounded-lg overflow-hidden">
+                        <thead class="bg-stone-900 text-white">
+                            <tr>
+                                <th class="py-3 px-6 text-left">No.</th>
+                                <th class="py-3 px-6 text-left">Response</th>
+                                <th class="py-3 px-6 text-left">Additional</th>
+                                <th class="py-3 px-6 text-left">Pic Link</th>
+                                <th class="py-3 px-6 text-left">Selected Time</th>
+                                <th class="py-3 px-6 text-left">Updated At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(vale, index) in vales" :key="vale.id" class="odd:bg-stone-700/20 border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6">{{ index + 1 + (currentPage2 - 1) * perPage2 }}.</td>
+                                <td class="py-3 px-6">{{ vale.valData }}</td>
+                                <td class="py-3 px-6">{{ vale.additioanl }}</td>
+                                <td class="py-3 px-6">{{ vale.pinkLink }}</td>
+                                <td class="py-3 px-6">{{ formatDate(vale.updatedAt) }}</td>
+                                <td class="py-3 px-6">{{ formatDate(vale.selectedDateTime) }}</td>
+                            </tr>
+                            <tr v-if="vales.length === 0" class="border-b border-gray-700 hover:bg-stone-700">
+                                <td class="py-3 px-6 text-center" colspan="12">No data found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>            
+            </section
             
             <hr class="border-white my-20">
 
@@ -184,6 +228,7 @@
                     visitors: [],
                     visitoors: [],
                     likes: [],
+                    vales: [],
                     perPage: 10,
                     perPage2: 10,
                     perPage3: 10,
@@ -284,7 +329,7 @@
                         console.error('Error fetching visitor data:', error);
                     });
 
-                axios.get('https://66716950e083e62ee43b7c51.mockapi.io/visitor_details')
+                axios.get('https://66b84cde3ce57325ac76d26f.mockapi.io/visitors')
                     .then(response => {
                         this.visitoors = response.data.reverse();
                     })
@@ -298,6 +343,13 @@
                     })
                     .catch(error => {
                         console.error('Error fetching likes data:', error);
+                    });
+                axios.get('https://66b84cde3ce57325ac76d26f.mockapi.io/valDate')
+                    .then(response => {
+                        this.vales = response.data;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
                     });
             }
         });
